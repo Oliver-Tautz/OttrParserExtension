@@ -803,6 +803,7 @@ class Term:
 				)
 				return define_string + array_define_template_call
 			else:
+				#return None
 				return self.inner_constant_ref.define_list(list_pos, smw_context, is_instance)
 		return ""
 
