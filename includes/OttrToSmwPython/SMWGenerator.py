@@ -21,9 +21,9 @@ def get_iris_from_wikicode(arglist_wikicode):
 
     ret = f"({first}"
     for arg in others:
-        ret+= f", {arg}"
+        ret += f", {arg}"
 
-    return ret+')'
+    return ret + ')'
 
 
 class SMWGenerator:
@@ -32,6 +32,10 @@ class SMWGenerator:
         self.prefixes = prefixes
         self.definitions = definitions
         self.instances = instances
+        print("new_run")
+        print(prefixes)
+        print(definitions)
+        print(instances)
 
     def produce_smw(self):
         """Produce the valid SMW Code for the init arguments for a page in a wiki.
@@ -43,8 +47,6 @@ class SMWGenerator:
 
         :return: Triple of strings containing the smw for the prefixes, instances and template_definitions
         """
-
-
 
         prefixes = self.produce_prefixes()
         instances = ""
@@ -58,7 +60,7 @@ class SMWGenerator:
             print(instances)
 
 
-
+        ### Template code here!
         elif len(self.definitions) > 0:
             templates_with_content = [d for d in self.definitions if d.pattern_list is not None]
             if len(self.instances) > 0:
@@ -88,7 +90,6 @@ class SMWGenerator:
 
             template_with_args = instance.template_name + '[\n'
 
-
             for idx, arg in enumerate(instance.argument_list):
                 # print(arg.get_smw_repr(),'\n ')
                 # print(arg.get_smw_repr_type())
@@ -99,11 +100,12 @@ class SMWGenerator:
                 if not arg.term.is_list():
 
                     # debug_print(arg.term.get_smw_repr(smw_context))
-                    template_with_args+='='+arg.term.get_smw_repr(smw_context)+'\n'
+                    template_with_args += '=' + arg.term.get_smw_repr(smw_context) + '\n'
                     pass
                 else:
-                    #print(arg.term.ctx.getText())
-                    template_with_args += '='+get_iris_from_wikicode(arg.term.define_list(0,smw_context,False))+'\n'
+                    # print(arg.term.ctx.getText())
+                    template_with_args += '=' + get_iris_from_wikicode(
+                        arg.term.define_list(0, smw_context, False)) + '\n'
 
                     pass
 
@@ -111,7 +113,7 @@ class SMWGenerator:
             instance_string += instance.get_smw_repr(smw_context)
         # debug_print(instance.template_name)
         # debug_print(instance.define_arrays(smw_context))
-        #debug_print(template_with_args+']')
+        # debug_print(template_with_args+']')
         return smw_context.produce_debug_str_start() + instance_string + smw_context.produce_debug_str_end() + smw_context.produce_triple_display() + "\n[[Category:OTTR_Instance]]"
 
     def produce_templates(self, produce_form):
@@ -139,17 +141,30 @@ class SMWGenerator:
 			
 			{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|cancel}}}
 			""") % (
-            "".join([("{{{field|template_%i|holds template}}}" % i) for i in range(1, len(self.definitions) + 1)]),
-            self.definitions[0].signature.template_name)
+                "".join([("{{{field|template_%i|holds template}}}" % i) for i in range(1, len(self.definitions) + 1)]),
+                self.definitions[0].signature.template_name)
 
         for i, template in enumerate(self.definitions, start=1):
             if template.pattern_list is None:
                 form_string = form_string % (template.get_form_repr(i, len(self.definitions) == 1) + "%s")
+
             else:
+
+
+                ### Template Code is run here ...
                 smw_context = SMWContext()
                 smw_context.call_occurrence_position = 0
                 upper_template_name = (template.signature.template_name[:1].upper() + template.signature.template_name[
-                                                                                      1:]).replace("_", " ")
+                                                                                     1:]).replace("_", " ")
+
+
+###
+                print('\n')
+                print(template.signature.template_name)
+
+                for par in template.signature.parameters:
+                    print(par.name)
+###
                 # a check if the template is in the template namespace
                 # and a check if the template name is the same as the page name (without the 'Template:'-Prefix) and throws an error otherwise
                 return (("<noinclude>"
@@ -159,7 +174,7 @@ class SMWGenerator:
                          "|{{ottr:ErrorMsg|Page does <b>NOT</b> lie in the <b>Template</b> namespace ({{FULLPAGENAME}})|code=-2|type=Warning}}}}"
                          " </noinclude>" % (upper_template_name, upper_template_name))
                         + (
-                                    "<noinclude>{{#ifexpr: {{ottr:DisplayFormHelp}}|%s|}}</noinclude>" % template.get_form_help_str())
+                                "<noinclude>{{#ifexpr: {{ottr:DisplayFormHelp}}|%s|}}</noinclude>" % template.get_form_help_str())
                         + "<includeonly>"
                         + template.get_smw_repr(smw_context)
                         + "</includeonly><noinclude>[[Category:OTTR_Template]]</noinclude>")

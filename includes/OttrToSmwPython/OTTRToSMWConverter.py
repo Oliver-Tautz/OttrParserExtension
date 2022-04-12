@@ -9,6 +9,7 @@ from stOTTR.stOTTRParser import stOTTRParser
 class OTTRToSMWConverter(stOTTRListener):
 
 	def __init__(self):
+		print('new_run_outter')
 		self.term = None
 		self.args_list = None
 		self.otype = None
@@ -87,6 +88,7 @@ class OTTRToSMWConverter(stOTTRListener):
 	def exitTemplateName(self, ctx: stOTTRParser.TemplateNameContext):
 		self.template_name = self.iri
 		self.iri = None
+		self.args = self.args_list
 
 	# Enter a parse tree produced by stOTTRParser#parameterList.
 	def enterParameterList(self, ctx: stOTTRParser.ParameterListContext):
