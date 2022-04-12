@@ -12,6 +12,7 @@ try:
 
 
 	def main(argv):
+		print(argv)
 		if len(argv) < 2:
 			print("<--No second argument for file name that contains ottr data-->")
 		else:

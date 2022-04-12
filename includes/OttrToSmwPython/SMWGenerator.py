@@ -43,10 +43,10 @@ class SMWGenerator:
 
         :return: Triple of strings containing the smw for the prefixes, instances and template_definitions
         """
+
+
+
         prefixes = self.produce_prefixes()
-        if prefixes:
-            print(prefixes)
-            pass
         instances = ""
         template_definitions = ""
         warnings = ""
@@ -97,10 +97,12 @@ class SMWGenerator:
                 # debug_print(arg.term.get_smw_repr(smw_context))
 
                 if not arg.term.is_list():
+
                     # debug_print(arg.term.get_smw_repr(smw_context))
                     template_with_args+='='+arg.term.get_smw_repr(smw_context)+'\n'
                     pass
                 else:
+                    #print(arg.term.ctx.getText())
                     template_with_args += '='+get_iris_from_wikicode(arg.term.define_list(0,smw_context,False))+'\n'
 
                     pass
@@ -109,7 +111,7 @@ class SMWGenerator:
             instance_string += instance.get_smw_repr(smw_context)
         # debug_print(instance.template_name)
         # debug_print(instance.define_arrays(smw_context))
-        debug_print(template_with_args+']')
+        #debug_print(template_with_args+']')
         return smw_context.produce_debug_str_start() + instance_string + smw_context.produce_debug_str_end() + smw_context.produce_triple_display() + "\n[[Category:OTTR_Instance]]"
 
     def produce_templates(self, produce_form):

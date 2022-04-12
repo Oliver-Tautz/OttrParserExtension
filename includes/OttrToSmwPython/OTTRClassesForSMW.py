@@ -777,7 +777,7 @@ class Term:
 
 		self.term_list_smw_key = None
 		self.term_list_type = None
-
+		self.ctx = ctx
 	def set_inner_constant(self, ctx):
 		self.inner_constant_ref = ctx.inner_constant
 
