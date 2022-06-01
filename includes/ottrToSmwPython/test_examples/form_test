@@ -1,0 +1,1 @@
+ex:NamedPizza[owl:Class ?pizza, ? owl:NamedIndividual ?country, NEList<ottr:IRI> ?toppings = (ex:TomatoSauce)] .

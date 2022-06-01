@@ -1,0 +1,88 @@
+@prefix rdf: 	  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 	  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: 	  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: 	  <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix ottr: 	  <http://ns.ottr.xyz/0.4/> .
+@prefix ax: 	  <http://tpl.ottr.xyz/owl/axiom/0.1/> .
+@prefix rstr: 	  <http://tpl.ottr.xyz/owl/restriction/0.1/> .
+@prefix o-pizza:  <http://tpl.ottr.xyz/pizza/0.1/> .
+
+@prefix ex: 	  <http://example.com/ns#> .
+
+# modifiers
+ex:NamedPizza [ ??pizza  ] .
+ex:NamedPizza [ !?pizza ] .
+ex:NamedPizza [ ?!?pizza ] .
+ex:NamedPizza [ !??pizza ] .
+
+# type too
+ex:NamedPizza [ owl:Class ?pizza ] .
+ex:NamedPizza [ ? owl:Class ?pizza ] .
+ex:NamedPizza [ ?! owl:Class ?pizza ] .
+
+# default value
+ex:NamedPizza [ owl:Class ?pizza = p:pizza] .
+ex:NamedPizza [ ? owl:Class ?pizza = 2] .
+ex:NamedPizza [ ?! owl:Class ?pizza = "asdf" ] .
+
+# more parameters
+ex:NamedPizza [  ?pizza ,  ?country  ,  ?toppings ] .
+
+# lists
+
+ex:NamedPizza [
+  ?pizza = "asdf" ,
+  ?country = ("asdf", "asdf") ,
+  ?toppings = ((()))
+] .
+
+
+# more complex types
+ex:NamedPizza [
+  ! owl:Class ?pizza  ,
+  ?! owl:NamedIndividual ?country  = ex:Class ,
+  NEList<List<List<owl:Class>>> ?toppings
+] .
+
+ex:template [ ] :: { ex:template((ex:template)) } .
+
+ex:template [?!?var ] :: { ex:template((((ex:template)))) } .
+
+ex:template [ ] :: { ex:template(( ex:template )) } .
+
+ex:NamedPizza [
+  ! owl:Class ?pizza = p:Grandiosa , ?! LUB<owl:NamedIndividual> ?country  , List<owl:Class> ?toppings
+  ]
+  @@ cross | ex:SomeAnnotationTemplate("asdf", "asdf", "asdf" ),
+  @@<http://asdf>("asdf", "asdf", ++("A", "B", "C") )
+  :: {
+     cross | ex:Template1 (?pizza, ++?toppings, _:blank) ,
+     ex:Template2 (1, 2,4,   5) ,
+     <http://Template2.com> ("asdf"^^xsd:string) ,      
+     zipMax | ex:Template4 ("asdf"^^xsd:string, ?pizza, ++( "a", "B" )),
+     zipMax | ex:Template4 ([], [], [], ++([], []), "a"@en)
+  } .
+
+
+# An instance with two arguments, both are IRIs:
+ex:Template (ex:A, ex:B) .
+
+# An instance with two arguments, both are no-value arguments:
+ex:Template ( , ) .
+
+# An instance with two arguments, one variable and one literal:
+ex:Template (?var, "string") .
+
+# An instance with one argument, which is a list with two elements.
+# The instance is marked with the instance modifier ~cross~, and the argument is marked with the list expander.
+cross | ex:Template (++(ex:A, ex:B)) .
+
+# An instance with three argument, where the last argument is a list.
+# The instance is marked with the instance modifier ~zipMin~, and the list argument is marked with the list expander.
+zipMin | ex:Template (1, 2, ++(ex:A, ex:B, ex:C)) .
+zipMin | ex:Template (1, 2, ++(ex:A, ex:B, ex:C), ++(ex:D, ex:E, ex:F)) .
+zipMin | ex:Template (1, 2, ++(ex:A, ex:B, ex:C), ++(ex:D, ex:E, ex:F), ++(ex:G, ex:H, ex:H)) .
+cross | ex:Template (1, 2, ++(ex:A, ex:B, ex:C), ++(ex:D, ex:E, ex:F)) .
+cross | ex:Template (1, 2, ++(ex:A, ex:B, ex:C), ++(ex:D, ex:E, ex:F), ++(ex:G, ex:H, ex:H)) .
+

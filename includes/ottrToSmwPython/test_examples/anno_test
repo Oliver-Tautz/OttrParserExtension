@@ -1,0 +1,8 @@
+# Anno test 1
+pt:TemplateAnno1 [ ? ?arg1, ?arg2, ? ?arg3 = pt:testDefault3]
+ @@pt:MyDefaultLayout(pt:TemplateAnno1, "arg")
+ :: {
+    pt:Triple (?arg1, pt:testPredicate, pt:testObject) ,
+    pt:Triple (pt:testSubject, ?arg2, pt:testObject) ,
+    pt:Triple (pt:testSubject, pt:testPredicate, ?arg3)
+} .

@@ -1,0 +1,184 @@
+# prefixes
+
+@prefix pt: <https://dipromag.techfak.uni-bielefeld.de/w/index.php/pt:> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix pt2: <https://dipromag.techfak.uni-bielefeld.de/w/index.php/pt:Template> .
+
+
+# templates
+# triple
+pt:Triple [?sub, ! ?pred, ?obj] :: BASE .
+
+# template 1
+pt:Template1 [ ?arg1, ?arg2, ?arg3] :: {
+    pt:Triple (?arg1, pt:testPredicate, pt:testObject) ,
+    pt:Triple (pt:testSubject, ?arg2, pt:testObject) ,
+    pt:Triple (pt:testSubject, pt:testPredicate, ?arg3)
+} .
+
+# default 1
+pt:TemplateDefault1 [ ?arg1 = pt:testDefault1, ?arg2 = pt:testDefault2, ?arg3 = pt:testDefault3] :: {
+    pt:Triple (?arg1, pt:testPredicate, pt:testObject) ,
+    pt:Triple (pt:testSubject, ?arg2, pt:testObject) ,
+    pt:Triple (pt:testSubject, pt:testPredicate, ?arg3)
+} .
+
+# default 2
+pt:TemplateDefault2 [ ?arg1, ?arg2 = pt:testDefault2, ? ?arg3] :: {
+    pt:Triple (?arg1, pt:testPredicate, pt:testObject) ,
+    pt:Triple (pt:testSubject, ?arg2, pt:testObject) ,
+    pt:Triple (pt:testSubject, pt:testPredicate, ?arg3)
+} .
+
+# default 3
+pt:TemplateDefault3 [ ?arg1 = pt:testDefault1, ?arg2 = pt:testDefault2, ?arg3 = pt:testDefault3] :: {
+    pt:Triple (?arg1, ?arg2, ?arg3)
+} .
+
+
+
+# optional 1
+pt:TemplateOptional1 [ ? ?arg1, ? ?arg2, ? ?arg3] :: {
+    pt:Triple (?arg1, pt:testPredicate, pt:testObject) ,
+    pt:Triple (pt:testSubject, ?arg2, pt:testObject) ,
+    pt:Triple (pt:testSubject, pt:testPredicate, ?arg3)
+} .
+
+# optional 2 and default
+pt:TemplateOptional2 [ ? ?arg1, ?arg2, ? ?arg3 = pt:testDefault3] :: {
+    pt:Triple (?arg1, pt:testPredicate, pt:testObject) ,
+    pt:Triple (pt:testSubject, ?arg2, pt:testObject) ,
+    pt:Triple (pt:testSubject, pt:testPredicate, ?arg3)
+} .
+
+
+# blank nodes 1
+pt:TemplateBlankNode1 [] :: {
+    pt:Triple (_:blankone, pt:testPredicate, []) ,
+    pt:Triple (pt:testSubject, pt:testPredicate, pt:testObject) ,
+    pt:Triple ([], pt:testPredicate, _:blankone)
+} .
+
+# non blank 1
+pt:TemplateNonBlank1 [ ! ?arg1 = pt:testDefault1, ! ?arg2 = pt:testDefault2, ! ?arg3 = pt:testDefault3] :: {
+    pt:Triple (?arg1, pt:testPredicate, pt:testObject) ,
+    pt:Triple (pt:testSubject, ?arg2, pt:testObject) ,
+    pt:Triple (pt:testSubject, pt:testPredicate, ?arg3)
+} .
+
+
+
+# literals 1
+pt:TemplateLiteral1 [ ?arg1 = 7 ] :: {
+    pt:Triple (pt:testInt, pt:testPredicate, 1) ,
+    pt:Triple (pt:testString, pt:testPredicate, "testString") ,
+    pt:Triple (pt:testDecimal, pt:testPredicate, 2.3) ,
+    pt:Triple (pt:testDecimalNeg, pt:testPredicate, -4.1) ,
+    pt:Triple (pt:testDouble, pt:testPredicate, 0.489e12) ,
+    pt:Triple (pt:testBool, pt:testPredicate, false) ,
+    pt:Triple (pt:testArgLiteral, pt:testPredicate, ?arg1)
+} .
+
+
+# list 1
+pt:TemplateList1 [ ?arg1 = pt:testDefault1, ?arg2 = pt:testDefault2, ?arg3 = (1,2,3,4,5)] :: {
+    cross | pt:Triple (?arg1, ?arg2, ++?arg3)
+} .
+
+# cross
+pt:TemplateCross [ ?arg1 = (pt:elem1, pt:elem2, pt:elem3, pt:elem4, pt:elem5), ?arg2 = pt:testDefault2, ?arg3 = (1,2,3,4,5)] :: {
+    cross | pt:Triple (++?arg1, ?arg2, ++?arg3)
+} .
+
+# zipMin 1
+pt:TemplateZipMin1 [ ?arg1 = (pt:elem1, pt:elem2, pt:elem3, pt:elem4, pt:elem5), ?arg2 = pt:testDefault2, ?arg3 = (1,2,3,4,5,6,7)] :: {
+    zipMin | pt:TemplateDefault3 (++?arg1, ?arg2, ++?arg3)
+} .
+
+
+# zipMax
+pt:TemplateZipMax1 [ ?arg1 = (pt:elem1, pt:elem2, pt:elem3, pt:elem4, pt:elem5), ?arg2 = pt:testDefault2, ?arg3 = (1,2,3,4,5,6,7)] :: {
+    zipMax | pt:TemplateDefault3 (++?arg1, ?arg2, ++?arg3)
+} .
+
+# multiple templates 1
+pt:TemplateDepth1 [ ?arg1, ?arg2, ?arg3] :: {
+    pt:TemplateLiteral1 ( true ) ,
+    pt:TemplateList1 ( none, none, none ) ,
+    pt:Triple (pt:testParam, ?arg2, ?arg3) ,
+    pt:Template1 (?arg1, pt:testParam1, pt:testParam) ,
+    zipMin | pt:Triple (++(1, 2, 3, 4), pt:testPredicate2, ++("1", "2", "3", "4"))
+} .
+
+
+pt:TemplateType1 [ xsd:integer ?arg1, ottr:IRI ?arg2] :: {
+    pt:Triple (pt:testParam1, pt:testParam2, ?arg1),
+    pt:Triple (pt:testParam1, pt:testParam2, ?arg2)
+} .
+
+pt:TemplateType2 [ xsd:float ?arg1, ?arg2] :: {
+    pt:TemplateType1 (?arg1, ex:testParam),
+    pt:Triple (pt:testParam1, pt:testParam2, ?arg2)
+} .
+
+pt:TemplateType3 [ List<xsd:integer> ?arg1, ottr:IRI ?arg2, NEList<ottr:IRI> ?arg3] :: {
+    cross | pt:Triple (?arg2, pt:testParam2, ++?arg1)
+} .
+
+
+pt:TemplateType3 [ LUB<xsd:integer> ?arg1, ottr:IRI ?arg2, NEList<ottr:IRI> ?arg3] :: {
+    cross | pt:Triple (?arg2, pt:testParam2, ++?arg1)
+} .
+
+
+# instances
+
+pt:Triple(3, 4, 5) .
+pt:Template1(pt:TestPara1,pt:TestPara2,pt:TestPara3) .
+
+pt:TemplateDefault1(pt:TestPara1,pt:TestPara2,pt:TestPara3) .
+pt:TemplateDefault1(none,pt:TestPara2,pt:TestPara3) .
+pt:TemplateDefault1(pt:TestPara1,none,pt:TestPara3) .
+pt:TemplateDefault1(pt:TestPara1,pt:TestPara2,none) .
+pt:TemplateDefault2(none,pt:TestPara2,pt:TestPara3) .
+
+pt:TemplateOptional1(none,pt:TestPara2,none) .
+pt:TemplateOptional2(none,pt:TestPara2,none) .
+pt:TemplateOptional2(pt:TestPara1,none,pt:TestPara3) .
+
+pt:TemplateNonBlank1(none, pt:TestPara2, []) .
+pt:TemplateNonBlank1(_:blankhere, pt:TestPara2, []) .
+pt:TemplateNonBlank1(pt:TestPara1, pt:TestPara2, pt:TestPara3) .
+
+pt:TemplateBlankNode1() .
+
+pt:TemplateLiteral1(none) .
+pt:TemplateLiteral1(true) .
+
+pt:TemplateList1(none, none, none) .
+pt:TemplateList1(pt:testPara1, pt:testPara2, ("12", "13", "14")) .
+
+pt:TemplateCross(none, none, none) .
+pt:TemplateCross((10, 20 ,30), pt:testPara2, (pt:elem1,pt:elem2,pt:elem3)) .
+
+pt:TemplateZipMin1(none, none, none) .
+pt:TemplateZipMin1((10, 20 ,30, 40 ,50), pt:testPara2, (pt:elem1,pt:elem2,pt:elem3)) .
+
+pt:TemplateZipMax1(none, none, none) .
+pt:TemplateZipMax1((10, 20, 30, 40 ,50), pt:testPara2, (pt:elem1,pt:elem2,pt:elem3)) .
+
+pt:TemplateDepth1(pt:testParam4,pt:testParam5,pt:testParam6) .
+
+pt:TemplateType1(3, ex:testParam).
+pt:TemplateType1(3, 4).
+pt:TemplateType1(ex:testParam, 4).
+
+pt:TemplateType2(3.4, ex:testParam).
+
+pt:TemplateType3((1,2,3,4,5), ex:testParam).
+pt:TemplateType3((1,2,3,4,5.2), ex:testParam).
+
+
+
+
+pt:T(()).
