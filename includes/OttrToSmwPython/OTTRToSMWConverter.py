@@ -9,7 +9,6 @@ from stOTTR.stOTTRParser import stOTTRParser
 class OTTRToSMWConverter(stOTTRListener):
 
 	def __init__(self):
-		print('new_run_outter')
 		self.term = None
 		self.args_list = None
 		self.otype = None

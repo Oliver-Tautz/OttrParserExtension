@@ -34,7 +34,7 @@ class OttrParserExtension {
 		}
 		$filename = './' . uniqid() . '.txt';
 		file_put_contents($filename, $input, LOCK_EX);
-		$command = 'extensions/OttrParserExtension/ottr_env/bin/python3 python3 extensions/OttrParserExtension/includes/OttrToSmwPython/printOttrInSmw.py ' . $filename . " 2>&1";
+		$command = 'extensions/OttrParserExtension/ottr_env/bin/python3 extensions/OttrParserExtension/includes/OttrToSmwPython/printOttrInSmw.py ' . $filename . " 2>&1";
 		$code = shell_exec($command);
 		$deleted = unlink($filename);
 		$display_ottr = '';

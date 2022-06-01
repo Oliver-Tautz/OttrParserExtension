@@ -5,9 +5,16 @@ from typing import List
 import re
 
 
+NON_BREAKING_SPACE = "&nbsp;"
+
 def debug_print(string):
     print("<pre>" + str(string) + "</pre>")
 
+def mediawiki_wrap_in_code(string):
+    return f"<code>{string}<\code>"
+
+def mediawiki_literal(s):
+    return "<pre>" + str(s) + "</pre>"
 
 def get_iris_from_wikicode(arglist_wikicode):
     "Get IRIS(?) from wikicode ..."
@@ -26,16 +33,85 @@ def get_iris_from_wikicode(arglist_wikicode):
     return ret + ')'
 
 
+def mediawiki_sub_arg(arg):
+    """
+    Get string to substitute arg i in mediawiki.
+
+    """
+
+    return "{{{"+arg+"}}}"
+
+
+def mediawiki_wrap_if_calldepht(s,calldepth):
+    return "{{#ifexpr:{{{call_depth|0}}}="+str(calldepth)+"|" + s + "}}"
+
+def mediawiki_build_template_with_args(template):
+    """
+    Get ottr template string with instance args. String will be read in mediawiki as
+
+    dpm:Publication_single[
+
+        arg1=foo
+        arg2=bar
+
+    ]
+
+    """
+    s=""
+
+    # [(argname,arg)]
+    # arg = {{{i}}}, substituted by mediawiki
+    par_arg_list = []
+
+    for i, par in enumerate(template.signature.parameters, 1):
+        par_arg_list.append((par.name,mediawiki_sub_arg(str(i))))
+
+
+    s = f"{template.signature.template_name} [\n"
+
+    parlens = [len(par) for (par,_) in par_arg_list]
+    longest_par = max(parlens)
+
+    for par, arg in par_arg_list:
+
+        s+= NON_BREAKING_SPACE*8
+        s+= f"{par}"
+        s+= NON_BREAKING_SPACE*(longest_par-len(par)+2) +"=" + NON_BREAKING_SPACE*2
+        s+= f"{arg}\n"
+
+    s+= "]\n"
+    #s += "</code>"
+
+
+    s = mediawiki_replace_newline_br(s)
+
+    #s = mediawiki_wrap_in_code(s)
+    return s
+
+def mediawiki_wrap_in_color_box(s,color='yellow'):
+
+    return f"<span style=\"background-color:{color}\">{s}</span>"
+
+def mediawiki_replace_newline_br(s):
+    return s.replace("\n","<br>")
+
+
+def mediawiki_colorbox(title,content):
+    """
+    Template:Colored_box must be present in mediawiki!
+
+
+    """
+
+    return f"{{{{Colored box|title={title}|content={content}}}}}"
+
 class SMWGenerator:
 
     def __init__(self, prefixes: List[PrefixID], definitions: List[Template], instances: List[Instance]):
         self.prefixes = prefixes
         self.definitions = definitions
         self.instances = instances
-        print("new_run")
-        print(prefixes)
-        print(definitions)
-        print(instances)
+
 
     def produce_smw(self):
         """Produce the valid SMW Code for the init arguments for a page in a wiki.
@@ -75,7 +151,9 @@ class SMWGenerator:
             if warnings:
                 print(warnings)
             template_definitions = self.produce_templates(produce_forms)
-            print(template_definitions)
+            # is this correct?
+
+            #print(template_definitions)
 
         return prefixes, instances, template_definitions
 
@@ -87,34 +165,11 @@ class SMWGenerator:
 
         instance_string = ""
         for inst_pos, instance in enumerate(self.instances):
-
-            template_with_args = instance.template_name + '[\n'
-
-            for idx, arg in enumerate(instance.argument_list):
-                # print(arg.get_smw_repr(),'\n ')
-                # print(arg.get_smw_repr_type())
-                # debug_print(arg.get_smw_repr_type(smw_context))
-                # debug_print(arg.term.variable)
-                # debug_print(arg.term.get_smw_repr(smw_context))
-
-                if not arg.term.is_list():
-
-                    # debug_print(arg.term.get_smw_repr(smw_context))
-                    template_with_args += '=' + arg.term.get_smw_repr(smw_context) + '\n'
-                    pass
-                else:
-                    # print(arg.term.ctx.getText())
-                    template_with_args += '=' + get_iris_from_wikicode(
-                        arg.term.define_list(0, smw_context, False)) + '\n'
-
-                    pass
-
             smw_context.call_occurrence_position = inst_pos
             instance_string += instance.get_smw_repr(smw_context)
-        # debug_print(instance.template_name)
-        # debug_print(instance.define_arrays(smw_context))
-        # debug_print(template_with_args+']')
-        return smw_context.produce_debug_str_start() + instance_string + smw_context.produce_debug_str_end() + smw_context.produce_triple_display() + "\n[[Category:OTTR_Instance]]"
+
+
+        return smw_context.produce_debug_str_start()  + mediawiki_colorbox('instance assignements',instance_string)+ smw_context.produce_debug_str_end() + smw_context.produce_triple_display() + "\n[[Category:OTTR_Instance]]"
 
     def produce_templates(self, produce_form):
         form_string = ""
@@ -144,6 +199,7 @@ class SMWGenerator:
                 "".join([("{{{field|template_%i|holds template}}}" % i) for i in range(1, len(self.definitions) + 1)]),
                 self.definitions[0].signature.template_name)
 
+
         for i, template in enumerate(self.definitions, start=1):
             if template.pattern_list is None:
                 form_string = form_string % (template.get_form_repr(i, len(self.definitions) == 1) + "%s")
@@ -159,11 +215,15 @@ class SMWGenerator:
 
 
 ###
-                print('\n')
-                print(template.signature.template_name)
+                #print('\n')
+                #print(template.signature.template_name)
 
-                for par in template.signature.parameters:
-                    print(par.name)
+
+                s = mediawiki_build_template_with_args(template)
+                #s= mediawiki_wrap_in_color_box(s)
+                # use noinclude?!
+                print(mediawiki_wrap_if_calldepht(s,1))
+
 ###
                 # a check if the template is in the template namespace
                 # and a check if the template name is the same as the page name (without the 'Template:'-Prefix) and throws an error otherwise
