@@ -21,7 +21,7 @@ setup(
     long_description_content_type="text/markdown",
     package_dir={'OtterParserExtension':'includes/ottrToSmwPython'},
     packages=['includes/ottrToSmwPython','includes/ottrToSmwPython/stOTTR'],
-    python_requires=">=3.8",
+    python_requires=">=3.7",
     install_requires=install_requires,
     entry_points={
         "console_scripts": [
