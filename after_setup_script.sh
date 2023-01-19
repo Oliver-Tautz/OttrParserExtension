@@ -149,7 +149,7 @@ cat add_to_localsettings.php >> $LOCALSETTINGS_PATH_TMP
 
 
 # copy LocalSettings.php to volume
-echo 'copy modified LocalSettings/php to docker Container.'
+echo 'copy modified LocalSettings.php to docker Container.'
 docker cp $LOCALSETTINGS_PATH_TMP "$MEDIAWIKI_CONTAINER_NAME:/var/www/html/LocalSettings.php"
 
 
