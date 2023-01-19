@@ -76,6 +76,7 @@ if [ "$autoinst" = false ]; then
                  pip install .
               else 
                  $pythonpath -m venv $envpath
+                 $envpath/bin/python -m pip install wheel; 
                  $envpath/bin/python -m pip install $setuppath; 
               fi
               break;; 
@@ -85,6 +86,7 @@ if [ "$autoinst" = false ]; then
    done
 else
    $pythonpath -m venv $envpath
+   $envpath/bin/python -m pip install wheel; 
    $envpath/bin/python -m pip install $setuppath; 
 fi
 
