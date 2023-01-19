@@ -19,7 +19,7 @@ RUN wget -q https://raw.githubusercontent.com/composer/getcomposer.org/76a7060cc
 RUN php composer.phar self-update --1
  
 # add semantic media wiki to composer.local.json 
-RUN echo '{ "require": { "mediawiki/semantic-media-wiki": "~4.0" }}' > composer.local.json
+RUN echo '{ "require": { "mediawiki/semantic-media-wiki": "~3.2.3" }}' > composer.local.json
 
 
 # install smw
@@ -34,7 +34,7 @@ WORKDIR /var/www/html/extensions
 
     # Install Arrays
 
-RUN git clone https://github.com/wikimedia/mediawiki-extensions-Arrays.git  --branch REL1_37  Arrays
+RUN git clone https://github.com/wikimedia/mediawiki-extensions-Arrays.git  --branch REL1_34  Arrays
 
     # Install AutoCreatePage
 
@@ -42,20 +42,20 @@ RUN git clone https://github.com/mkroetzsch/AutoCreatePage.git AutoCreatePage
 
     # Install Input Box
     # this seems to be installed 
-#RUN git clone https://github.com/wikimedia/mediawiki-extensions-InputBox.git --branch REL1_37  InputBox
+#RUN git clone https://github.com/wikimedia/mediawiki-extensions-InputBox.git --branch REL1_34  InputBox
 
     # Install Loops
-RUN git clone https://github.com/wikimedia/mediawiki-extensions-Loops.git --branch REL1_37  Loops
+RUN git clone https://github.com/wikimedia/mediawiki-extensions-Loops.git --branch REL1_34  Loops
 
     # Install Pageforms
-RUN git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms.git PageForms
+RUN git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms.git --branch REL1_37 PageForms
 
     # Install ParserFunctions
     # this is already installed
-#RUN git clone  https://github.com/wikimedia/mediawiki-extensions-ParserFunctions.git --branch REL1_37  ParserFunctions
+#RUN git clone  https://github.com/wikimedia/mediawiki-extensions-ParserFunctions.git --branch REL1_34  ParserFunctions
 
 
-RUN git clone https://github.com/wikimedia/mediawiki-extensions-Variables.git --branch REL1_37 Variables
+RUN git clone https://github.com/wikimedia/mediawiki-extensions-Variables.git --branch REL1_34 Variables
 # install ottrparser
 
 RUN git clone https://github.com/Oliver-Tautz/OttrParserExtension.git
