@@ -49,6 +49,25 @@ stottr_output = api.model('stottr_output', {
     'prefixes': fields.String(description="prefixes from wiki parsed to .stottr syntax.")
 })
 
+mediawiki_edit_result = api.model('mediawiki_edit_result', {
+    'result':fields.String(),
+    'pageid':fields.Integer(),
+    'title':fields.String(),
+    "nochange": fields.String(),
+    "watched": fields.String(),
+})
+
+mediawiki_edit = api.model('mediawiki_edit', {
+    'edit': fields.Nested(mediawiki_edit_result)
+
+})
+
+mediawiki_edits= api.model('mediawiki_edits', {
+    'edits': fields.List(fields.Nested(mediawiki_edit))
+
+})
+
+
 
 ## Helper Functions.
 
@@ -245,8 +264,9 @@ class get_stottr_all(Resource):
 
 
 @ottr_namespace_post.route("/api/stottr_file", methods=['POST'])
-@api.doc(body=stottr_file, responses={201: "Created Stottr Pages Sucessful", 400: "Bad Request"})
 class stottr_file(Resource):
+   
+    @api.doc(body=stottr_file, responses={201: "Created Stottr Pages Sucessful", 400: "Bad Request"})
     def post(self):
         """
         Import stottr file.
@@ -324,11 +344,13 @@ class stottr_file(Resource):
                                     bot_user_password=server_cfg['bot_user_password'],
                                     append=False, create_only=not overwrite)
 
+        print(pages)
+
         prefix_edit = append_to_prefixes(prefixes=prefixes, mediawiki_url=server_cfg['wikiurl'],
                                          bot_user_name=server_cfg['bot_user_name'],
                                          bot_user_password=server_cfg['bot_user_password'])
 
-        return "Created Stottr Pages Sucessfully", 201
+        return pages, 201
 
 
 # This is loaded once on server startup from the .cfg file. For changes the server needs to be restarted.

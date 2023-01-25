@@ -260,4 +260,5 @@ def edit_or_create_page(titles, texts, mediawiki_url, bot_user_name, bot_user_pa
         logging.info(DATA)
 
         datas.append(dict(DATA))
+
     return datas
