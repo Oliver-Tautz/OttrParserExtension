@@ -13,6 +13,7 @@ from flask import Flask, jsonify, request
 from flask_restx import Api, Resource, fields
 import requests
 from ottrServerUtils import *
+from includes.ottrToSmwPython.Settings import API_QUERY_LIMIT
 
 import logging
 
@@ -65,6 +66,22 @@ def _parse_config(path):
     return params
 
 
+def split(list,sublist_size):
+    sublists = []
+    for i in range(0,len(list),sublist_size):
+        sublists.append(list[i:i+sublist_size])
+    return sublists
+
+
+def get_all_pagetexts(titles,S,URL):
+
+    titles_split = split(titles, API_QUERY_LIMIT)
+
+    pages = []
+    for titles in titles_split:
+        pages.extend(get_page_texts(titles, S, URL)['query']['pages'].values())
+    return pages
+
 ## Server Functions GET
 
 @ottr_namespace_server.route("/api/ping", methods=['GET'])
@@ -83,6 +100,7 @@ class Ping(Resource):
 @ottr_namespace_get.route("/api/get_instances", methods=['GET'])
 class get_stottr_instances(Resource):
     @api.response(200, 'Sucess', stottr_output)
+    @api.response(500, 'Sucess')
     @api.doc(body=None)
     def get(self):
         """
@@ -106,7 +124,8 @@ class get_stottr_instances(Resource):
 
         titles = [x['title'] for x in DATA['query']['categorymembers']]
 
-        pages = get_page_texts(titles, S, URL)['query']['pages'].values()
+        pages = get_all_pagetexts(titles,S,URL)
+
         pagetexts = [x['revisions'][0]['*'] for x in pages]
         # print(pagetexts)
 
@@ -144,7 +163,7 @@ class get_stottr_templates(Resource):
         DATA = R.json()
         titles = [x['title'] for x in DATA['query']['categorymembers']]
 
-        pages = get_page_texts(titles, S, URL)['query']['pages'].values()
+        pages = get_all_pagetexts(titles,S,URL)
 
         pagetexts = []
 
