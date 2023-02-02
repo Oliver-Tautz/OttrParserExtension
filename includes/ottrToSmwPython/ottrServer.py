@@ -265,7 +265,7 @@ class get_stottr_all(Resource):
 
 @ottr_namespace_post.route("/api/stottr_file", methods=['POST'])
 class stottr_file(Resource):
-   
+
     @api.doc(body=stottr_file, responses={201: "Created Stottr Pages Sucessful", 400: "Bad Request"})
     def post(self):
         """
