@@ -377,7 +377,7 @@ if __name__ == '__main__':
         server_cfg = _parse_config(
             args.config)
 
-        logging.basicConfig(filename=server_cfg['logfile_path'], encoding='utf-8', level=logging.DEBUG, filemode='a')
+        logging.basicConfig(filename=server_cfg['logfile_path'],  level=logging.DEBUG, filemode='a')
         logging.info(f" ----- Config parsed sucessfully :) Starting Server at {datetime.now()} ----- ")
 
 
@@ -390,4 +390,4 @@ if __name__ == '__main__':
         print(type(e))
         exit(-1)
 
-    app.run(port=server_cfg['port'], debug=True, threaded=False)
+    app.run(port=server_cfg['port'],host="0.0.0.0", debug=True, threaded=False)
