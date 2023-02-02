@@ -429,8 +429,9 @@ class Instance:
 
             """
             # expression that prints 'yes' for each page with Prefix:TemplateName in mediawiki and nothing otherwise
-            prefixed_exists = ''.join(["{{#ifeq:{{Exists|%s:%s}}|1|yes|}}" % (prefix, self.template_name) for prefix in
-                                       ottr_template_namespaces])
+            prefixed_exists = ''.join(["{{#ifeq:{{Exists|%s:%s}}|1|yes|}}" % (prefix, template_name) for prefix in
+                                       ottr_template_namespaces]
+                                      + ["{{#ifeq:{{Exists|%s}}|1|yes|}}" % template_name])
 
             # prints print_ex if one or more pages exists in wiki and print_nex otherwise
             if_ex = "{{#if:%s|%s|%s}}" % (prefixed_exists, print_ex, print_nex)
@@ -444,6 +445,8 @@ class Instance:
                     # Call subtemplates in wiki with arguments
                     template_call = "{{%s%s}}" % (self.template_name, self.argument_list_smw_repr(smw_context))
 
+                    ## Warning for missing templates. Not working for now ....
+
                     warning = "{{ottr:ErrorMsg|Template %s called but not present in wiki!}}" % self.template_name
 
                     template_call_with_warning = "%s %s" % (template_call,warning)
@@ -452,7 +455,7 @@ class Instance:
                     exists_wrap = template_exists_wrap(self.template_name,template_call, template_call_with_warning)
 
 
-                    smw += exists_wrap
+                    smw += template_call
                    # print('<pre>' + smw + '</pre>')
                     pass
                 else:

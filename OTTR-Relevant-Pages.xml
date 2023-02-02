@@ -1791,5 +1791,55 @@ preloadparams[]=n instance
       <text xml:space="preserve" bytes="184">&lt;includeonly&gt;{{#ifeq:{{anchorencode:{{lc:[[:{{{page|{{{1|defaultFalse}}}}}}]]}}}}|{{anchorencode:{{lc:{{:{{{page|{{{1|defaultFalse}}}}}}}}}}}}|{{{else|0}}}|{{{then|1}}}}}&lt;/includeonly&gt;</text>
       <sha1>po3bc0hoztheuhfh23jafbfs2qcxqgi</sha1>
     </revision>
+</page>
+ <page>
+    <title>Pizza1</title>
+    <ns>0</ns>
+    <id>301</id>
+    <revision>
+      <id>1209</id>
+      <parentid>1187</parentid>
+      <timestamp>2023-02-02T11:28:55Z</timestamp>
+      <contributor>
+        <ip>0:0:0:0:0:0:0:1</ip>
+      </contributor>
+      <origin>1209</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="228" sha1="q5updls5tnmodj6lhvawm92pph0v3vn" xml:space="preserve">{{ottr:MultiInstanceCreation
+|template_1={{ottr:SingleInstanceForMultiCreation1
+|template_name=dpm:NamedPizza
+|number_args=2
+|arg_1=ex:pizza1
+|arg_2="A generic instance of a pizza."^^xsd:string
+}}
+|default_form=dpm:NamedPizza
+}}</text>
+      <sha1>q5updls5tnmodj6lhvawm92pph0v3vn</sha1>
+    </revision>
   </page>
+  <page>
+    <title>Template:Dpm:NamedPizza</title>
+    <ns>10</ns>
+    <id>307</id>
+    <revision>
+      <id>1210</id>
+      <timestamp>2023-02-02T11:29:48Z</timestamp>
+      <contributor>
+        <ip>0:0:0:0:0:0:0:1</ip>
+      </contributor>
+      <comment>Created page with "&lt;ottr&gt; dpm:NamedPizza[ottr:IRI ?name, xsd:string ?label] :: { 	ax:SubClassOf(?name, ex:Pizza), 	ottr:Triple(?name, rdfs:label, ?label) } . &lt;/ottr&gt;"</comment>
+      <origin>1210</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="146" sha1="oetqz0u9zg6xteq21i83wddw4uk6zhk" xml:space="preserve">&lt;ottr&gt;
+dpm:NamedPizza[ottr:IRI ?name, xsd:string ?label] :: {
+	ax:SubClassOf(?name, ex:Pizza),
+	ottr:Triple(?name, rdfs:label, ?label)
+} .
+&lt;/ottr&gt;</text>
+      <sha1>oetqz0u9zg6xteq21i83wddw4uk6zhk</sha1>
+    </revision>
+  </page>
+
 </mediawiki>

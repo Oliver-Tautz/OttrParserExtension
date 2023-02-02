@@ -138,7 +138,12 @@ def mediawiki_generate_template_in_correct_namespace_query():
 def mediawiki_generate_template_correct_name(name, warning):
     # gets a one if one namespace:name is equal to FULLPAGENAME and empty string otherwise
     possibilities = ''.join(
-        ["{{#ifeq:%s:%s|{{FULLPAGENAME}}|1|}}" % (namespace.capitalize(), name) for namespace in ottr_template_namespaces])
+        ["{{#ifeq:%s:%s|{{FULLPAGENAME}}|1|}}" % (namespace.capitalize(), name) for namespace in ottr_template_namespaces]
+        # add option of pagename == name
+    +   ["{{#ifeq:%s|{{FULLPAGENAME}}|1|}}" % name]
+
+
+    )
 
     # Prints warning if one of the paganemaes matches
     if_ex = "{{#if:%s||%s}}" % (possibilities,warning)
