@@ -66,6 +66,6 @@ RUN ./setup_ottr_for_mediawiki.sh -a -p python3
 WORKDIR /var/www/html
 
 
-CMD ./extensions/OttrParserExtension/ottr_env/bin/python extensions/OttrParserExtension/includes/ottrToSmwPython/ottrServer.py --config /var/www/html/extensions/OttrParserExtension/includes/ottrToSmwPython/ottrServerExampleConfig.cfg --base-url http://localhost/
+# CMD ./extensions/OttrParserExtension/ottr_env/bin/python extensions/OttrParserExtension/includes/ottrToSmwPython/ottrServer.py --config /var/www/html/extensions/OttrParserExtension/includes/ottrToSmwPython/ottrServerExampleConfig.cfg --base-url http://localhost/ 
 
 # Now start the manual setup ... 
