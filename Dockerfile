@@ -65,4 +65,5 @@ RUN ./setup_ottr_for_mediawiki.sh -a -p python3
 
 WORKDIR /var/www/html
 
+RUN nohup includes/ottrToSmwPython/ottrServer.py &
 # Now start the manual setup ... 

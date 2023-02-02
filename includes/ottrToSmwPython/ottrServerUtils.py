@@ -109,6 +109,9 @@ def get_page_texts(titles,session,url):
     S = session
     URL=url
 
+    #for i in range(0,len(titles),QUERY_LIMIT):
+
+
     PARAMS_GET= {'action':'query','prop':'revisions','titles':'|'.join(titles),'format':'json','rvprop':'content'}
     R = S.get(url=URL,params=PARAMS_GET)
     DATA =R.json()
@@ -257,4 +260,5 @@ def edit_or_create_page(titles, texts, mediawiki_url, bot_user_name, bot_user_pa
         logging.info(DATA)
 
         datas.append(dict(DATA))
+
     return datas
