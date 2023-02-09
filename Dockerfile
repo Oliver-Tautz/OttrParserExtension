@@ -58,7 +58,7 @@ RUN git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms.git 
 RUN git clone https://github.com/wikimedia/mediawiki-extensions-Variables.git --branch REL1_34 Variables
 # install ottrparser
 
-RUN git clone https://github.com/Oliver-Tautz/OttrParserExtension.git --branch docker-release
+RUN git clone https://github.com/Oliver-Tautz/OttrParserExtension.git --branch docker_release
 WORKDIR /var/www/html/extensions/OttrParserExtension
 RUN python3 -m pip install wheel
 RUN ./setup_ottr_for_mediawiki.sh -a -p python3
