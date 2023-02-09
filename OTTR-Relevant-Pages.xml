@@ -1,9 +1,9 @@
-<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="en">
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.10/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.10/ http://www.mediawiki.org/xml/export-0.10.xsd" version="0.10" xml:lang="en">
   <siteinfo>
-    <sitename>MockupWiki</sitename>
+    <sitename>ottrwiki</sitename>
     <dbname>my_wiki</dbname>
-    <base>http://localhost/mediawiki-1.37.1/index.php/Main_Page</base>
-    <generator>MediaWiki 1.37.1</generator>
+    <base>http://localhost:8080/index.php/Main_Page</base>
+    <generator>MediaWiki 1.34.2</generator>
     <case>first-letter</case>
     <namespaces>
       <namespace key="-2" case="first-letter">Media</namespace>
@@ -12,8 +12,8 @@
       <namespace key="1" case="first-letter">Talk</namespace>
       <namespace key="2" case="first-letter">User</namespace>
       <namespace key="3" case="first-letter">User talk</namespace>
-      <namespace key="4" case="first-letter">MockupWiki</namespace>
-      <namespace key="5" case="first-letter">MockupWiki talk</namespace>
+      <namespace key="4" case="first-letter">Ottrwiki</namespace>
+      <namespace key="5" case="first-letter">Ottrwiki talk</namespace>
       <namespace key="6" case="first-letter">File</namespace>
       <namespace key="7" case="first-letter">File talk</namespace>
       <namespace key="8" case="first-letter">MediaWiki</namespace>
@@ -35,27 +35,24 @@
       <namespace key="114" case="first-letter">Rule</namespace>
       <namespace key="115" case="first-letter">Rule talk</namespace>
       <namespace key="3000" case="first-letter">Dpm</namespace>
-      <namespace key="3001" case="first-letter">Dpmtest</namespace>
     </namespaces>
   </siteinfo>
   <page>
     <title>Template:Colored box</title>
     <ns>10</ns>
-    <id>283</id>
+    <id>11</id>
     <revision>
-      <id>1212</id>
-      <parentid>1075</parentid>
+      <id>11</id>
       <timestamp>2023-02-02T11:39:52Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>1075</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1014" sha1="9vx1oe0ku1wpxr4anka1rfyn9dfub7e" xml:space="preserve">__NOEDITSECTION__ __NOTOC__&lt;div style="clear: both;"&gt;&lt;/div&gt; 
+      <text xml:space="preserve" bytes="1014">__NOEDITSECTION__ __NOTOC__&lt;div style="clear: both;"&gt;&lt;/div&gt; 
 &lt;div style="border: 1px solid {{{border|#99c}}};&lt;!--
          --&gt;background: {{{titlebackground|#ccf}}};&lt;!--
          --&gt;color: {{{titleforeground|#000}}};&lt;!--
@@ -76,39 +73,36 @@
   <page>
     <title>Template:Highlight</title>
     <ns>10</ns>
-    <id>97</id>
+    <id>12</id>
     <revision>
-      <id>320</id>
+      <id>12</id>
       <timestamp>2022-05-05T12:23:17Z</timestamp>
       <contributor>
         <ip>127.0.0.1</ip>
       </contributor>
       <comment>Created page with "&lt;span style="background-color:{{{2|yellow}}}"&gt;{{{1}}}&lt;/span&gt;"</comment>
-      <origin>320</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="60" sha1="lulb4tjx8sejqw955cetbme5hqls4ci" xml:space="preserve">&lt;span style="background-color:{{{2|yellow}}}"&gt;{{{1}}}&lt;/span&gt;</text>
+      <text xml:space="preserve" bytes="60">&lt;span style="background-color:{{{2|yellow}}}"&gt;{{{1}}}&lt;/span&gt;</text>
       <sha1>lulb4tjx8sejqw955cetbme5hqls4ci</sha1>
     </revision>
   </page>
   <page>
     <title>Ottr:Documentation</title>
     <ns>0</ns>
-    <id>31</id>
+    <id>13</id>
     <revision>
-      <id>88</id>
-      <parentid>87</parentid>
+      <id>13</id>
       <timestamp>2022-03-22T18:51:32Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>87</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="46578" sha1="4dyjrnk01eyowt0rok3t1e83b2y3yom" xml:space="preserve">This extension provides a parsing of [https://ottr.xyz/ OTTR] statements and a suitable generation of wikicode that implements an equivalent behavior for such statement in the mediawiki. E.g., produce RDF triples based on semantic grouped templates for a consistent and simple instantiation of triple based information.
+      <text xml:space="preserve" bytes="46578">This extension provides a parsing of [https://ottr.xyz/ OTTR] statements and a suitable generation of wikicode that implements an equivalent behavior for such statement in the mediawiki. E.g., produce RDF triples based on semantic grouped templates for a consistent and simple instantiation of triple based information.
 
 == In a Nutshell ==
 With OTTR you can define and instantiate templates with a defined syntax with additional features for parameters/arguments and also Lists of terms and different literal types handled by the parser. Main part is the template definition and the instantiation. A very simple example is shown in this section. The next section shows a more complex example that shows more of the features of the OTTR-language inside the pizza ontology.
@@ -752,21 +746,19 @@ The SMW Extension does not accept special characters in the subobject like &lt;c
   <page>
     <title>Ottr:Overview</title>
     <ns>0</ns>
-    <id>32</id>
+    <id>14</id>
     <revision>
-      <id>90</id>
-      <parentid>89</parentid>
+      <id>14</id>
       <timestamp>2022-03-22T18:51:32Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>89</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="2186" sha1="g2ipnzcxc01codwt2398vbpdf5w05jg" xml:space="preserve">Welcome to the OTTR-Overview page from  here you should get all the links to important pages used by the OTTR-Extension.
+      <text xml:space="preserve" bytes="2186">Welcome to the OTTR-Overview page from  here you should get all the links to important pages used by the OTTR-Extension.
 
 == Documentation ==
 Further information about the usage of the extension, like parser call and ottr-syntax can be found here: [[Ottr:Documentation]].
@@ -820,21 +812,19 @@ The Extension uses some templates for internal processing, if you want some chan
   <page>
     <title>Ottr:Feature Representation</title>
     <ns>0</ns>
-    <id>33</id>
+    <id>15</id>
     <revision>
-      <id>92</id>
-      <parentid>91</parentid>
+      <id>15</id>
       <timestamp>2022-03-22T18:51:32Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>91</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="12412" sha1="rllsmoszgblby0l0pxpsjjzl0gx7200" xml:space="preserve">An Overview of how different OTTR Features are represented in the MediaWiki/Semantic MediaWiki Syntax.
+      <text xml:space="preserve" bytes="12412">An Overview of how different OTTR Features are represented in the MediaWiki/Semantic MediaWiki Syntax.
 == Prefix ==
 
 Only writes subobject on a prefix page, not on usual pages. In Template:ottr:Prefix:
@@ -1138,19 +1128,17 @@ Display debug info:
   <page>
     <title>Ottr:OttrPrefixes</title>
     <ns>0</ns>
-    <id>34</id>
+    <id>16</id>
     <revision>
-      <id>1208</id>
-      <parentid>1202</parentid>
+      <id>16</id>
       <timestamp>2023-01-26T12:14:48Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
-      <origin>1208</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1193" sha1="5xdvhmv8h6sqdoyyoeqp624996uabfc" xml:space="preserve">Put here all your prefixes used in ottr templates.
+      <text xml:space="preserve" bytes="498">Put here all your prefixes used in ottr templates.
 &lt;ottr&gt;
 @prefix pt: &lt;https://dipromag.techfak.uni-bielefeld.de/w/index.php/pt:&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
@@ -1159,27 +1147,25 @@ Display debug info:
 @prefix rdfs:    &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix dipromag:    &lt;http://tpl.ottr.xyz/dipromag/0.1/&gt; .
 @prefix dpm:    &lt;http://dipromag.techfak.uni-bielefeld.de/dipromag_onto/0.1/&gt; .lt;/ottr&gt;</text>
-      <sha1>5xdvhmv8h6sqdoyyoeqp624996uabfc</sha1>
+      <sha1>hgrdhri8rhdysqxa4bv4cuwe1cb5k27</sha1>
     </revision>
   </page>
   <page>
     <title>Ottr:ErrorPages</title>
     <ns>0</ns>
-    <id>35</id>
+    <id>17</id>
     <revision>
-      <id>96</id>
-      <parentid>95</parentid>
+      <id>17</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>95</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="177" sha1="9erbqbwlpadfemthl7wyd5of1qorvwi" xml:space="preserve">All errors produced by the OTTR extension and the pages on which they appeared:
+      <text xml:space="preserve" bytes="177">All errors produced by the OTTR extension and the pages on which they appeared:
 
 {{#ask:
  [[subobject-category::OTTR-Error]]
@@ -1194,21 +1180,19 @@ Display debug info:
   <page>
     <title>Ottr:AllTriples</title>
     <ns>0</ns>
-    <id>36</id>
+    <id>18</id>
     <revision>
-      <id>98</id>
-      <parentid>97</parentid>
+      <id>18</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>97</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="133" sha1="h3m6ufe17woscw504l7os6v9tbkzmpe" xml:space="preserve">All Initlaised Triples:
+      <text xml:space="preserve" bytes="133">All Initlaised Triples:
 
 {{#ask:
  [[subobject-category::OTTR-Triple]]
@@ -1223,154 +1207,138 @@ Display debug info:
   <page>
     <title>Template:Ottr:DebugOnOFF</title>
     <ns>10</ns>
-    <id>37</id>
+    <id>19</id>
     <revision>
-      <id>467</id>
-      <parentid>466</parentid>
+      <id>19</id>
       <timestamp>2022-07-15T10:45:12Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
-      <origin>467</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="90" sha1="b542sabu3ce77v4r4s0drkg2jd0b132" xml:space="preserve">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'debug information' on, 0 off.&lt;/noinclude&gt;</text>
+      <text xml:space="preserve" bytes="90">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'debug information' on, 0 off.&lt;/noinclude&gt;</text>
       <sha1>b542sabu3ce77v4r4s0drkg2jd0b132</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:AllAnnotationsOnOff</title>
     <ns>10</ns>
-    <id>38</id>
+    <id>20</id>
     <revision>
-      <id>429</id>
-      <parentid>102</parentid>
+      <id>20</id>
       <timestamp>2022-07-10T15:05:14Z</timestamp>
       <contributor>
         <ip>127.0.0.1</ip>
       </contributor>
-      <origin>429</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="116" sha1="4it1psm8rgz4qb4u383a87zj349pfqz" xml:space="preserve">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'display all annotation independent of depth' on, 0 off.&lt;/noinclude&gt;</text>
+      <text xml:space="preserve" bytes="116">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'display all annotation independent of depth' on, 0 off.&lt;/noinclude&gt;</text>
       <sha1>4it1psm8rgz4qb4u383a87zj349pfqz</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:DisplayTriplesOnOff</title>
     <ns>10</ns>
-    <id>39</id>
+    <id>21</id>
     <revision>
-      <id>428</id>
-      <parentid>422</parentid>
+      <id>21</id>
       <timestamp>2022-07-10T15:05:06Z</timestamp>
       <contributor>
         <ip>127.0.0.1</ip>
       </contributor>
-      <origin>428</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="112" sha1="hnugy5hj84rw68rnwvxw7vtn27l0oca" xml:space="preserve">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'display all Triples generated on a page' on, 0 off.&lt;/noinclude&gt;</text>
+      <text xml:space="preserve" bytes="112">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'display all Triples generated on a page' on, 0 off.&lt;/noinclude&gt;</text>
       <sha1>hnugy5hj84rw68rnwvxw7vtn27l0oca</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:DisplayCode</title>
     <ns>10</ns>
-    <id>40</id>
+    <id>22</id>
     <revision>
-      <id>427</id>
-      <parentid>423</parentid>
+      <id>22</id>
       <timestamp>2022-07-10T15:04:55Z</timestamp>
       <contributor>
         <ip>127.0.0.1</ip>
       </contributor>
-      <origin>427</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="99" sha1="tjdfgw6yp4fxwu7ab0yfnpx67bqgkom" xml:space="preserve">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'display generated smw code' on, 0 off.&lt;/noinclude&gt;</text>
+      <text xml:space="preserve" bytes="99">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'display generated smw code' on, 0 off.&lt;/noinclude&gt;</text>
       <sha1>tjdfgw6yp4fxwu7ab0yfnpx67bqgkom</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:DisplayOttr</title>
     <ns>10</ns>
-    <id>41</id>
+    <id>23</id>
     <revision>
-      <id>1089</id>
-      <parentid>1088</parentid>
+      <id>23</id>
       <timestamp>2022-12-22T12:11:48Z</timestamp>
       <contributor>
         <ip>127.0.0.1</ip>
       </contributor>
-      <origin>1089</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="91" sha1="12awqle6xjewc9ryqwf3r3khfclr4b3" xml:space="preserve">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'display ottr input' on, 0 off.&lt;/noinclude&gt;</text>
+      <text xml:space="preserve" bytes="91">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'display ottr input' on, 0 off.&lt;/noinclude&gt;</text>
       <sha1>12awqle6xjewc9ryqwf3r3khfclr4b3</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:DisplayFormHelp</title>
     <ns>10</ns>
-    <id>42</id>
+    <id>24</id>
     <revision>
-      <id>110</id>
-      <parentid>109</parentid>
+      <id>24</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>109</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="95" sha1="j8pbfwu0co07eq86outg2c9k3j3zta5" xml:space="preserve">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'display ottr form help' on, 0 off.&lt;/noinclude&gt;</text>
+      <text xml:space="preserve" bytes="95">&lt;includeonly&gt;1&lt;/includeonly&gt;&lt;noinclude&gt; 1 turns 'display ottr form help' on, 0 off.&lt;/noinclude&gt;</text>
       <sha1>j8pbfwu0co07eq86outg2c9k3j3zta5</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:ListType</title>
     <ns>10</ns>
-    <id>43</id>
+    <id>25</id>
     <revision>
-      <id>112</id>
-      <parentid>111</parentid>
+      <id>25</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>111</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="608" sha1="sx1hkmhzjzan07x52iew1x64xm3jw14" xml:space="preserve">&lt;noinclude&gt; Produces a list of types of a list depending on the intersection of types of all entries of the list.&lt;/noinclude&gt;&lt;includeonly&gt;{{#if: {{{1|}}}|{{#arraydefine:mykey|{{{1}}}|,}}{{#arraydefine:incommonarray|{{#arrayindex:mykey|0}}|§}}{{#loop: idx|0|{{#arraysize:mykey}}|{{#arraydefine: i_array|{{#arrayindex:mykey|{{#var:idx}}}}|§}}{{#arrayintersect:incommonarray|incommonarray|i_array}}}}{{#loop: idx|0|{{#arraysize:incommonarray}}|{{#if: {{#arrayindex:incommonarray|{{#var:idx}}}}|List&lt;{{#arrayindex:incommonarray|{{#var:idx}}}}&gt;§|}}}}{{#arrayreset:mykey|incommonarray|i_array}}|}}&lt;/includeonly&gt;</text>
+      <text xml:space="preserve" bytes="608">&lt;noinclude&gt; Produces a list of types of a list depending on the intersection of types of all entries of the list.&lt;/noinclude&gt;&lt;includeonly&gt;{{#if: {{{1|}}}|{{#arraydefine:mykey|{{{1}}}|,}}{{#arraydefine:incommonarray|{{#arrayindex:mykey|0}}|§}}{{#loop: idx|0|{{#arraysize:mykey}}|{{#arraydefine: i_array|{{#arrayindex:mykey|{{#var:idx}}}}|§}}{{#arrayintersect:incommonarray|incommonarray|i_array}}}}{{#loop: idx|0|{{#arraysize:incommonarray}}|{{#if: {{#arrayindex:incommonarray|{{#var:idx}}}}|List&lt;{{#arrayindex:incommonarray|{{#var:idx}}}}&gt;§|}}}}{{#arrayreset:mykey|incommonarray|i_array}}|}}&lt;/includeonly&gt;</text>
       <sha1>sx1hkmhzjzan07x52iew1x64xm3jw14</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:Prefix</title>
     <ns>10</ns>
-    <id>44</id>
+    <id>26</id>
     <revision>
-      <id>114</id>
-      <parentid>113</parentid>
+      <id>26</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>113</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="283" sha1="fsfid8afyr9axtbcrn84ags053kvryv" xml:space="preserve">&lt;noinclude&gt; Template for generating and plotting prefixes properly on the page for prefixes..&lt;/noinclude&gt;
+      <text xml:space="preserve" bytes="283">&lt;noinclude&gt; Template for generating and plotting prefixes properly on the page for prefixes..&lt;/noinclude&gt;
 &lt;includeonly&gt;# Prefix: '''{{{2}}}''' :   {{{1}}} {{#subobject: |iri={{#replace:{{#replace:{{{1}}}|&lt;|}}|&gt;|}}|namespace={{{2}}}|subobject-category=OTTR-Prefix}}&lt;br/&gt;&lt;/includeonly&gt;</text>
       <sha1>fsfid8afyr9axtbcrn84ags053kvryv</sha1>
     </revision>
@@ -1378,21 +1346,19 @@ Display debug info:
   <page>
     <title>Template:Ottr:PrefixCheck</title>
     <ns>10</ns>
-    <id>45</id>
+    <id>27</id>
     <revision>
-      <id>116</id>
-      <parentid>115</parentid>
+      <id>27</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>115</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="364" sha1="bkqoidw95hk2v1f9kwr68aypd56sioj" xml:space="preserve">&lt;noinclude&gt; Ask Query, used as a hint for the user if the prefix is already saved on the prefix page or not.&lt;/noinclude&gt;
+      <text xml:space="preserve" bytes="364">&lt;noinclude&gt; Ask Query, used as a hint for the user if the prefix is already saved on the prefix page or not.&lt;/noinclude&gt;
 &lt;includeonly&gt;
 {{#if:{{#ask: [[-Has subobject::Ottr:OttrPrefixes]][[namespace::{{{2}}}]] |?namespace|format=list|link=none}}||{{ottr:ErrorMsg|Prefix '''{{{2}}}''' is not defined on page Ottr:OttrPrefixes!|code=-4|type=Warning}}}}
 &lt;/includeonly&gt;</text>
@@ -1402,61 +1368,55 @@ Display debug info:
   <page>
     <title>Template:Ottr:ErrorMsg</title>
     <ns>10</ns>
-    <id>46</id>
+    <id>28</id>
     <revision>
-      <id>118</id>
-      <parentid>117</parentid>
+      <id>28</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>117</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="680" sha1="5ihnm1ts2d8f0ljmiz6jj3e9wju4lud" xml:space="preserve">&lt;noinclude&gt; Displays an error box and writes a subobject witht the error information.&lt;/noinclude&gt;&lt;includeonly&gt;&lt;table class="warning-message" cellspacing="0" cellpadding="0" border="0" style="box-sizing:border-box; border:1px #d33 solid; background: transparent; margin:0.5em 0;padding:0.5em;background-color: #fee7e6"&gt;&lt;tr&gt;&lt;td nowrap="nowrap" valign="top"&gt;'''{{{type|Error}}}:''' &lt;/td&gt;&lt;td valign="top"&gt;&amp;emsp;{{{msg|{{{1|}}}}}}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;{{#subobject: |msg={{#replace:{{#replace:{{{msg|{{{1}}}}}}|&lt;|-:}}|&gt;|:-}} |code={{{code}}}|type={{{type|Error}}} |subobject-category=OTTR-Error}}&lt;/includeonly&gt;&lt;noinclude&gt;Error Box. msg via "msg" argument or first argument&lt;/noinclude&gt;</text>
+      <text xml:space="preserve" bytes="680">&lt;noinclude&gt; Displays an error box and writes a subobject witht the error information.&lt;/noinclude&gt;&lt;includeonly&gt;&lt;table class="warning-message" cellspacing="0" cellpadding="0" border="0" style="box-sizing:border-box; border:1px #d33 solid; background: transparent; margin:0.5em 0;padding:0.5em;background-color: #fee7e6"&gt;&lt;tr&gt;&lt;td nowrap="nowrap" valign="top"&gt;'''{{{type|Error}}}:''' &lt;/td&gt;&lt;td valign="top"&gt;&amp;emsp;{{{msg|{{{1|}}}}}}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;{{#subobject: |msg={{#replace:{{#replace:{{{msg|{{{1}}}}}}|&lt;|-:}}|&gt;|:-}} |code={{{code}}}|type={{{type|Error}}} |subobject-category=OTTR-Error}}&lt;/includeonly&gt;&lt;noinclude&gt;Error Box. msg via "msg" argument or first argument&lt;/noinclude&gt;</text>
       <sha1>5ihnm1ts2d8f0ljmiz6jj3e9wju4lud</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:AskForTriples</title>
     <ns>10</ns>
-    <id>47</id>
+    <id>29</id>
     <revision>
-      <id>120</id>
-      <parentid>119</parentid>
+      <id>29</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>119</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="373" sha1="dnscw2w64r0xjq5j3e42hql4slcyudn" xml:space="preserve">&lt;includeonly&gt;'''Generated Triples:''' ''(Needs sometimes 2x refreshes)''&lt;br /&gt;{{#ask: [[-Has subobject::{{FULLPAGENAME}}]][[Subobject-category::OTTR-Triple]] |?subject |?predicate |?object}}&lt;/includeonly&gt;&lt;noinclude&gt; Adds the ask query for all generated triples on this page. Needs a second or third refresh for working properly after generating new ottr triples.&lt;noinclude&gt;</text>
+      <text xml:space="preserve" bytes="373">&lt;includeonly&gt;'''Generated Triples:''' ''(Needs sometimes 2x refreshes)''&lt;br /&gt;{{#ask: [[-Has subobject::{{FULLPAGENAME}}]][[Subobject-category::OTTR-Triple]] |?subject |?predicate |?object}}&lt;/includeonly&gt;&lt;noinclude&gt; Adds the ask query for all generated triples on this page. Needs a second or third refresh for working properly after generating new ottr triples.&lt;noinclude&gt;</text>
       <sha1>dnscw2w64r0xjq5j3e42hql4slcyudn</sha1>
     </revision>
   </page>
   <page>
     <title>Ottr:FormTemplate</title>
     <ns>0</ns>
-    <id>48</id>
+    <id>30</id>
     <revision>
-      <id>622</id>
-      <parentid>618</parentid>
+      <id>30</id>
       <timestamp>2022-09-21T19:24:58Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
-      <origin>622</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="484" sha1="3pxrc80bysq1j3qzv4ehr8b086xlp35" xml:space="preserve">&lt;no&lt;includeonly&gt;&lt;/includeonly&gt;include&gt;
+      <text xml:space="preserve" bytes="484">&lt;no&lt;includeonly&gt;&lt;/includeonly&gt;include&gt;
 [[Category:OTTR Template Signature Form]]This is the '''$1''' form.
 To create a page with this form, enter the page name below. 
 If a page with that name already exists, you will be sent to a form to edit that page.{{#forminput:form=$1$3
@@ -1473,21 +1433,19 @@ $2
   <page>
     <title>Ottr:SubCategoryTemplate</title>
     <ns>0</ns>
-    <id>49</id>
+    <id>31</id>
     <revision>
-      <id>124</id>
-      <parentid>123</parentid>
+      <id>31</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>123</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="93" sha1="asd39mpv2kat1ylq1yd5dkd78wx8w9e" xml:space="preserve">&lt;noinclude&gt;&lt;nowiki&gt;&lt;/noinclude&gt;[[Category:$1]]&lt;noinclude&gt;&lt;/nowiki&gt;&lt;/noinclude&gt;
+      <text xml:space="preserve" bytes="93">&lt;noinclude&gt;&lt;nowiki&gt;&lt;/noinclude&gt;[[Category:$1]]&lt;noinclude&gt;&lt;/nowiki&gt;&lt;/noinclude&gt;
 Is a $2 of $1.</text>
       <sha1>asd39mpv2kat1ylq1yd5dkd78wx8w9e</sha1>
     </revision>
@@ -1495,21 +1453,19 @@ Is a $2 of $1.</text>
   <page>
     <title>Template:Ottr:MultiInstanceCreation</title>
     <ns>10</ns>
-    <id>50</id>
+    <id>32</id>
     <revision>
-      <id>126</id>
-      <parentid>125</parentid>
+      <id>32</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>125</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="331" sha1="mftwiqkp8gr577dj74p0at6qo8sfigu" xml:space="preserve">&lt;noinclude&gt; Template for forms, insert the ottr code as arguments starting with 'template_'. The default_form can be passed via the named argument 'default_form'.&lt;/noinclude&gt;&lt;includeonly&gt;
+      <text xml:space="preserve" bytes="331">&lt;noinclude&gt; Template for forms, insert the ottr code as arguments starting with 'template_'. The default_form can be passed via the named argument 'default_form'.&lt;/noinclude&gt;&lt;includeonly&gt;
 {{#tag:ottr|{{#forargs: template_|key|value|{{#var: value}}}}}}
 {{#if: {{{default_form|}}}|{{#default_form:{{{default_form}}}}}}}
 &lt;includeonly&gt;</text>
@@ -1519,147 +1475,133 @@ Is a $2 of $1.</text>
   <page>
     <title>Template:Ottr:SingleInstanceForMultiCreation</title>
     <ns>10</ns>
-    <id>51</id>
+    <id>33</id>
     <revision>
-      <id>128</id>
-      <parentid>127</parentid>
+      <id>33</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>127</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="340" sha1="8gjbdl4mw1p6vfpyhj68bveo9k8oh6o" xml:space="preserve">&lt;noinclude&gt; Base Template for all other Template:Ottr:SingleInstanceForMultiCreation pages. They should have the same includeonly code like this page.&lt;/noinclude&gt;&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
+      <text xml:space="preserve" bytes="340">&lt;noinclude&gt; Base Template for all other Template:Ottr:SingleInstanceForMultiCreation pages. They should have the same includeonly code like this page.&lt;/noinclude&gt;&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
       <sha1>8gjbdl4mw1p6vfpyhj68bveo9k8oh6o</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:SingleInstanceForMultiCreation1</title>
     <ns>10</ns>
-    <id>52</id>
+    <id>34</id>
     <revision>
-      <id>130</id>
-      <parentid>129</parentid>
+      <id>34</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>129</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="178" sha1="d3yoe1d4ywyj7qdyki941oaz3huvxg9" xml:space="preserve">&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
+      <text xml:space="preserve" bytes="178">&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
       <sha1>d3yoe1d4ywyj7qdyki941oaz3huvxg9</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:SingleInstanceForMultiCreation2</title>
     <ns>10</ns>
-    <id>53</id>
+    <id>35</id>
     <revision>
-      <id>132</id>
-      <parentid>131</parentid>
+      <id>35</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>131</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="178" sha1="d3yoe1d4ywyj7qdyki941oaz3huvxg9" xml:space="preserve">&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
+      <text xml:space="preserve" bytes="178">&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
       <sha1>d3yoe1d4ywyj7qdyki941oaz3huvxg9</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:SingleInstanceForMultiCreation3</title>
     <ns>10</ns>
-    <id>54</id>
+    <id>36</id>
     <revision>
-      <id>134</id>
-      <parentid>133</parentid>
+      <id>36</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>133</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="178" sha1="d3yoe1d4ywyj7qdyki941oaz3huvxg9" xml:space="preserve">&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
+      <text xml:space="preserve" bytes="178">&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
       <sha1>d3yoe1d4ywyj7qdyki941oaz3huvxg9</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:SingleInstanceForMultiCreation4</title>
     <ns>10</ns>
-    <id>55</id>
+    <id>37</id>
     <revision>
-      <id>136</id>
-      <parentid>135</parentid>
+      <id>37</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>135</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="178" sha1="d3yoe1d4ywyj7qdyki941oaz3huvxg9" xml:space="preserve">&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
+      <text xml:space="preserve" bytes="178">&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
       <sha1>d3yoe1d4ywyj7qdyki941oaz3huvxg9</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Ottr:SingleInstanceForMultiCreation5</title>
     <ns>10</ns>
-    <id>56</id>
+    <id>38</id>
     <revision>
-      <id>138</id>
-      <parentid>137</parentid>
+      <id>38</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>137</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="178" sha1="d3yoe1d4ywyj7qdyki941oaz3huvxg9" xml:space="preserve">&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
+      <text xml:space="preserve" bytes="178">&lt;includeonly&gt;{{{template_name}}}({{#loop:ottr_instance_loop|1|{{{number_args}}}|{{#ifexpr:{{#var:ottr_instance_loop}}&gt;1|,}}{{{arg_{{#var:ottr_instance_loop}}}}}}}).&lt;/includeonly&gt;</text>
       <sha1>d3yoe1d4ywyj7qdyki941oaz3huvxg9</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Layout:OttrDefaultLayout</title>
     <ns>10</ns>
-    <id>57</id>
+    <id>39</id>
     <revision>
-      <id>140</id>
-      <parentid>139</parentid>
+      <id>39</id>
       <timestamp>2022-03-22T18:51:33Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>139</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="758" sha1="c7u6fyhl9m8m2w63wae6pgvgfvllg4i" xml:space="preserve">&lt;includeonly&gt;{| class="wikitable"
+      <text xml:space="preserve" bytes="758">&lt;includeonly&gt;{| class="wikitable"
 !colspan="6"|{{{1|Template}}}
 |-
 {{#loop:defaultlayoutloop|1|{{{ottr_number_anno_args|0}}}|&amp;nbsp;
@@ -1684,18 +1626,16 @@ A template would generate the following table, if it is added as an annotation w
   <page>
     <title>Template:Ottr:Triple</title>
     <ns>10</ns>
-    <id>58</id>
+    <id>40</id>
     <revision>
-      <id>1092</id>
-      <parentid>1091</parentid>
+      <id>40</id>
       <timestamp>2023-01-10T10:57:11Z</timestamp>
       <contributor>
         <ip>127.0.0.1</ip>
       </contributor>
-      <origin>1092</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="8529" sha1="ru18cguf5bx2ldcv5dyr4h1zx8f4w52" xml:space="preserve">&lt;noinclude&gt;&lt;!--{{safesubst:#ottrFunction:ottr:Triple[?subject, ?predicate, ?object] :: BASE.}}--&gt;{{#ifexpr: {{ottr:DisplayOttr}}|'''OTTR-Definition:'''&lt;br/&gt;&lt;pre&gt;ottr:Triple[?subject, ?predicate, ?object] :: BASE.&lt;/pre&gt;}}&lt;/noinclude&gt;{{#ifexpr:{{{call_depth|0}}}=1|?subject{{{1}}}?predicate{{{2}}}?object{{{3}}}}}
+      <text xml:space="preserve" bytes="8529">&lt;noinclude&gt;&lt;!--{{safesubst:#ottrFunction:ottr:Triple[?subject, ?predicate, ?object] :: BASE.}}--&gt;{{#ifexpr: {{ottr:DisplayOttr}}|'''OTTR-Definition:'''&lt;br/&gt;&lt;pre&gt;ottr:Triple[?subject, ?predicate, ?object] :: BASE.&lt;/pre&gt;}}&lt;/noinclude&gt;{{#ifexpr:{{{call_depth|0}}}=1|?subject{{{1}}}?predicate{{{2}}}?object{{{3}}}}}
 &lt;noinclude&gt;{{#ifeq:{{#pos:{{FULLPAGENAME}}|Template:}}|0|{{#ifeq:{{#sub:{{FULLPAGENAME}}|9}}|Ottr:Triple||{{ottr:ErrorMsg|Template name and Page name should be the same: Ottr:Triple (Template name), &lt;b&gt;{{#sub:{{FULLPAGENAME}}|9}}&lt;/b&gt; (Pagename)|code=-1|type=Warning}}}}|{{ottr:ErrorMsg|Page does &lt;b&gt;NOT&lt;/b&gt; lie in the &lt;b&gt;Template&lt;/b&gt; namespace ({{FULLPAGENAME}})|code=-2|type=Warning}}}} &lt;/noinclude&gt;&lt;noinclude&gt;{{#ifexpr: {{ottr:DisplayFormHelp}}|&lt;b&gt;Form Info:&lt;/b&gt;&lt;br/&gt;The OTTR-Extension comes with an automated form creation, which simplifies the generation of instances of a template via input fields:
 {{#ifexpr: {{exists|Form:ottr:Triple}}|: [[Form:ottr:Triple|Create instance with form]]
 |&lt;inputbox&gt;
@@ -1730,21 +1670,19 @@ preloadparams[]=}}
   <page>
     <title>Template:Ax:SubClassOf</title>
     <ns>10</ns>
-    <id>302</id>
+    <id>41</id>
     <revision>
-      <id>1214</id>
-      <parentid>1188</parentid>
+      <id>41</id>
       <timestamp>2023-02-02T11:39:53Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>1188</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="4553" sha1="ctdpd1ylroufl7i3vllo5p3g0m2d1fz" xml:space="preserve">&lt;noinclude&gt;&lt;!--{{safesubst:#ottrFunction:ax:SubClassOf[?subclass, ?class]::{ottr:Triple(?subclass, rdfs:subClassOf, ?class)}.}}--&gt;{{#ifexpr: {{ottr:DisplayOttr}}|'''OTTR-Definition:'''&lt;br/&gt;&lt;pre&gt;ax:SubClassOf[?subclass, ?class]::{ottr:Triple(?subclass, rdfs:subClassOf, ?class)}.&lt;/pre&gt;}}&lt;/noinclude&gt;&lt;noinclude&gt;{{#ifeq:{{#pos:{{FULLPAGENAME}}|Template:}}|0|{{#ifeq:{{#sub:{{FULLPAGENAME}}|9}}|Ax:SubClassOf||{{ottr:ErrorMsg|Template name and Page name should be the same: Ax:SubClassOf (Template name), &lt;b&gt;{{#sub:{{FULLPAGENAME}}|9}}&lt;/b&gt; (Pagename)|code=-1|type=Warning}}}}|{{ottr:ErrorMsg|Page does &lt;b&gt;NOT&lt;/b&gt; lie in the &lt;b&gt;Template&lt;/b&gt; namespace ({{FULLPAGENAME}})|code=-2|type=Warning}}}} &lt;/noinclude&gt;&lt;noinclude&gt;{{#ifexpr: {{ottr:DisplayFormHelp}}|&lt;b&gt;Form Info:&lt;/b&gt;&lt;br/&gt;The OTTR-Extension comes with an automated form creation, which simplifies the generation of instances of a template via input fields:
+      <text xml:space="preserve" bytes="4553">&lt;noinclude&gt;&lt;!--{{safesubst:#ottrFunction:ax:SubClassOf[?subclass, ?class]::{ottr:Triple(?subclass, rdfs:subClassOf, ?class)}.}}--&gt;{{#ifexpr: {{ottr:DisplayOttr}}|'''OTTR-Definition:'''&lt;br/&gt;&lt;pre&gt;ax:SubClassOf[?subclass, ?class]::{ottr:Triple(?subclass, rdfs:subClassOf, ?class)}.&lt;/pre&gt;}}&lt;/noinclude&gt;&lt;noinclude&gt;{{#ifeq:{{#pos:{{FULLPAGENAME}}|Template:}}|0|{{#ifeq:{{#sub:{{FULLPAGENAME}}|9}}|Ax:SubClassOf||{{ottr:ErrorMsg|Template name and Page name should be the same: Ax:SubClassOf (Template name), &lt;b&gt;{{#sub:{{FULLPAGENAME}}|9}}&lt;/b&gt; (Pagename)|code=-1|type=Warning}}}}|{{ottr:ErrorMsg|Page does &lt;b&gt;NOT&lt;/b&gt; lie in the &lt;b&gt;Template&lt;/b&gt; namespace ({{FULLPAGENAME}})|code=-2|type=Warning}}}} &lt;/noinclude&gt;&lt;noinclude&gt;{{#ifexpr: {{ottr:DisplayFormHelp}}|&lt;b&gt;Form Info:&lt;/b&gt;&lt;br/&gt;The OTTR-Extension comes with an automated form creation, which simplifies the generation of instances of a template via input fields:
 {{#ifexpr: {{exists|Form:ax:SubClassOf}}|: [[Form:ax:SubClassOf|Create instance with form]]
 |&lt;inputbox&gt;
 type=create
@@ -1788,21 +1726,19 @@ preloadparams[]= subclass
   <page>
     <title>Template:Ax:Type</title>
     <ns>10</ns>
-    <id>308</id>
+    <id>42</id>
     <revision>
-      <id>1216</id>
-      <parentid>1215</parentid>
+      <id>42</id>
       <timestamp>2023-02-02T11:39:53Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>1215</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="4422" sha1="800cuwyc3l2cg7i2znjx3i2wv9sji38" xml:space="preserve">&lt;noinclude&gt;&lt;!--{{safesubst:#ottrFunction:ax:Type[?instance, ?class]::{ottr:Triple(?instance, rdf:type, ?class)}.}}--&gt;{{#ifexpr: {{ottr:DisplayOttr}}|'''OTTR-Definition:'''&lt;br/&gt;&lt;pre&gt;ax:Type[?instance, ?class]::{ottr:Triple(?instance, rdf:type, ?class)}.&lt;/pre&gt;}}&lt;/noinclude&gt;&lt;noinclude&gt;{{#ifeq:{{#pos:{{FULLPAGENAME}}|Template:}}|0|{{#ifeq:{{#sub:{{FULLPAGENAME}}|9}}|Ax:Type||{{ottr:ErrorMsg|Template name and Page name should be the same: Ax:Type (Template name), &lt;b&gt;{{#sub:{{FULLPAGENAME}}|9}}&lt;/b&gt; (Pagename)|code=-1|type=Warning}}}}|{{ottr:ErrorMsg|Page does &lt;b&gt;NOT&lt;/b&gt; lie in the &lt;b&gt;Template&lt;/b&gt; namespace ({{FULLPAGENAME}})|code=-2|type=Warning}}}} &lt;/noinclude&gt;&lt;noinclude&gt;{{#ifexpr: {{ottr:DisplayFormHelp}}|&lt;b&gt;Form Info:&lt;/b&gt;&lt;br/&gt;The OTTR-Extension comes with an automated form creation, which simplifies the generation of instances of a template via input fields:
+      <text xml:space="preserve" bytes="4422">&lt;noinclude&gt;&lt;!--{{safesubst:#ottrFunction:ax:Type[?instance, ?class]::{ottr:Triple(?instance, rdf:type, ?class)}.}}--&gt;{{#ifexpr: {{ottr:DisplayOttr}}|'''OTTR-Definition:'''&lt;br/&gt;&lt;pre&gt;ax:Type[?instance, ?class]::{ottr:Triple(?instance, rdf:type, ?class)}.&lt;/pre&gt;}}&lt;/noinclude&gt;&lt;noinclude&gt;{{#ifeq:{{#pos:{{FULLPAGENAME}}|Template:}}|0|{{#ifeq:{{#sub:{{FULLPAGENAME}}|9}}|Ax:Type||{{ottr:ErrorMsg|Template name and Page name should be the same: Ax:Type (Template name), &lt;b&gt;{{#sub:{{FULLPAGENAME}}|9}}&lt;/b&gt; (Pagename)|code=-1|type=Warning}}}}|{{ottr:ErrorMsg|Page does &lt;b&gt;NOT&lt;/b&gt; lie in the &lt;b&gt;Template&lt;/b&gt; namespace ({{FULLPAGENAME}})|code=-2|type=Warning}}}} &lt;/noinclude&gt;&lt;noinclude&gt;{{#ifexpr: {{ottr:DisplayFormHelp}}|&lt;b&gt;Form Info:&lt;/b&gt;&lt;br/&gt;The OTTR-Extension comes with an automated form creation, which simplifies the generation of instances of a template via input fields:
 {{#ifexpr: {{exists|Form:ax:Type}}|: [[Form:ax:Type|Create instance with form]]
 |&lt;inputbox&gt;
 type=create
@@ -1847,40 +1783,36 @@ preloadparams[]=n instance
   <page>
     <title>Template:Exists</title>
     <ns>10</ns>
-    <id>73</id>
+    <id>43</id>
     <revision>
-      <id>1218</id>
-      <parentid>238</parentid>
+      <id>43</id>
       <timestamp>2023-02-02T11:39:53Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
-      <origin>238</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="184" sha1="po3bc0hoztheuhfh23jafbfs2qcxqgi" xml:space="preserve">&lt;includeonly&gt;{{#ifeq:{{anchorencode:{{lc:[[:{{{page|{{{1|defaultFalse}}}}}}]]}}}}|{{anchorencode:{{lc:{{:{{{page|{{{1|defaultFalse}}}}}}}}}}}}|{{{else|0}}}|{{{then|1}}}}}&lt;/includeonly&gt;</text>
+      <text xml:space="preserve" bytes="184">&lt;includeonly&gt;{{#ifeq:{{anchorencode:{{lc:[[:{{{page|{{{1|defaultFalse}}}}}}]]}}}}|{{anchorencode:{{lc:{{:{{{page|{{{1|defaultFalse}}}}}}}}}}}}|{{{else|0}}}|{{{then|1}}}}}&lt;/includeonly&gt;</text>
       <sha1>po3bc0hoztheuhfh23jafbfs2qcxqgi</sha1>
     </revision>
   </page>
   <page>
     <title>Dpm:NamedPizza</title>
     <ns>3000</ns>
-    <id>310</id>
+    <id>46</id>
     <revision>
-      <id>1226</id>
-      <parentid>1225</parentid>
+      <id>48</id>
       <timestamp>2023-02-09T09:46:37Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
-      <origin>1226</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="152" sha1="c81hbqao8z0mavovy38z3n8kvv3faai" xml:space="preserve">&lt;ottr&gt;
+      <text xml:space="preserve" bytes="152">&lt;ottr&gt;
 dpm:NamedPizza[ottr:IRI ?name, xsd:string ?label] :: {
     ax:SubClassOf(?name, ex:Pizza),
     ottr:Triple(?name, rdfs:label, ?label)
@@ -1893,19 +1825,17 @@ dpm:NamedPizza[ottr:IRI ?name, xsd:string ?label] :: {
   <page>
     <title>Dpm:Pizza1</title>
     <ns>3000</ns>
-    <id>311</id>
+    <id>47</id>
     <revision>
-      <id>1227</id>
-      <parentid>1224</parentid>
+      <id>49</id>
       <timestamp>2023-02-09T09:47:13Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
-      <origin>1227</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="232" sha1="sge5lwjpu2m7tk7o5plzkoeq8gs9f73" xml:space="preserve">{{ottr:MultiInstanceCreation
+      <text xml:space="preserve" bytes="232">{{ottr:MultiInstanceCreation
 |template_1={{ottr:SingleInstanceForMultiCreation1
 |template_name=dpm:NamedPizza
 |number_args=2
@@ -1915,6 +1845,33 @@ dpm:NamedPizza[ottr:IRI ?name, xsd:string ?label] :: {
 |default_form=dpm:NamedPizza
 }}</text>
       <sha1>sge5lwjpu2m7tk7o5plzkoeq8gs9f73</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Form:Dpm:NamedPizza</title>
+    <ns>106</ns>
+    <id>48</id>
+    <revision>
+      <id>50</id>
+      <timestamp>2023-02-09T11:56:31Z</timestamp>
+      <contributor>
+        <ip>172.17.0.1</ip>
+      </contributor>
+      <comment>Created page with "&lt;noinclude&gt; [[Category:OTTR Template Signature Form]]This is the '''dpm:NamedPizza''' form. To create a page with this form, enter the page name below.  If a page with that na..."</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="392">&lt;noinclude&gt;
+[[Category:OTTR Template Signature Form]]This is the '''dpm:NamedPizza''' form.
+To create a page with this form, enter the page name below. 
+If a page with that name already exists, you will be sent to a form to edit that page.{{#forminput:form=dpm:NamedPizza}}
+&lt;/noinclude&gt;
+&lt;includeonly&gt;
+&lt;ottr form=true&gt;
+
+dpm:NamedPizza[ottr:IRI ?name, xsd:string ?label].
+&lt;/ottr&gt;
+&lt;/includeonly&gt;</text>
+      <sha1>ns9zy1scmh20lip7vwzevo7phnef1o6</sha1>
     </revision>
   </page>
 </mediawiki>
