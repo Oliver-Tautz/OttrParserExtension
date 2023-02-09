@@ -164,3 +164,6 @@ echo 'importing ottr pages from xml...'
 docker exec $MEDIAWIKI_CONTAINER_NAME php maintenance/importDump.php extensions/OttrParserExtension/OTTR-Relevant-Pages.xml
 echo 'done importing ottr pages from xml'
 
+docker exec $MEDIAWIKI_CONTAINER_NAME nohup ./extensions/OttrParserExtension/ottr_env/bin/python extensions/OttrParserExtension/includes/ottrToSmwPython/ottrServer.py --config /var/www/html/extensions/OttrParserExtension/includes/ottrToSmwPython/ottrServerExampleConfig.cfg --base-url http://localhost/ &
+
+
