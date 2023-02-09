@@ -21,4 +21,10 @@ require_once "$IP/extensions/AutoCreatePage/AutoCreatePage.php";
 # This surpresses some warnings ..
 $wgDeprecationReleaseLimit = '1.x';
 
+
+define("NS_dpm", 3000);
+$wgExtraNamespaces[3000] = "Dpm";
+$smwgNamespacesWithSemanticLinks[3000] = true;
+
+
 ###############################################################
