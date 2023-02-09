@@ -1793,7 +1793,7 @@ preloadparams[]=n instance
     </revision>
 </page>
  <page>
-    <title>Pizza1</title>
+    <titleDdpm:Pizza1</title>
     <ns>0</ns>
     <id>301</id>
     <revision>
@@ -1810,7 +1810,7 @@ preloadparams[]=n instance
 |template_1={{ottr:SingleInstanceForMultiCreation1
 |template_name=dpm:NamedPizza
 |number_args=2
-|arg_1=ex:pizza1
+|arg_1=ex:pizza0
 |arg_2="A generic instance of a pizza."^^xsd:string
 }}
 |default_form=dpm:NamedPizza
@@ -1819,7 +1819,7 @@ preloadparams[]=n instance
     </revision>
   </page>
   <page>
-    <title>Template:Dpm:NamedPizza</title>
+    <title>Dpm:NamedPizza</title>
     <ns>10</ns>
     <id>307</id>
     <revision>
