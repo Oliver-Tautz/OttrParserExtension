@@ -47,15 +47,15 @@
       <parentid>1075</parentid>
       <timestamp>2023-02-02T11:39:52Z</timestamp>
       <contributor>
-        <username>Oliver Tautz</username>
-        <id>1</id>
+        <username>imported&gt;Oliver Tautz</username>
+        <id>0</id>
       </contributor>
       <minor/>
       <comment>1 revision imported</comment>
       <origin>1075</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1014" sha1="9vx1oe0ku1wpxr4anka1rfyn9dfub7e" xml:space="preserve">__NOEDITSECTION__ __NOTOC__&lt;div style="clear: both;"&gt;&lt;/div&gt; 
+      <text xml:space="preserve" bytes="1014">__NOEDITSECTION__ __NOTOC__&lt;div style="clear: both;"&gt;&lt;/div&gt; 
 &lt;div style="border: 1px solid {{{border|#99c}}};&lt;!--
          --&gt;background: {{{titlebackground|#ccf}}};&lt;!--
          --&gt;color: {{{titleforeground|#000}}};&lt;!--
@@ -76,18 +76,17 @@
   <page>
     <title>Template:Highlight</title>
     <ns>10</ns>
-    <id>97</id>
+    <id>12</id>
     <revision>
-      <id>320</id>
+      <id>12</id>
       <timestamp>2022-05-05T12:23:17Z</timestamp>
       <contributor>
         <ip>127.0.0.1</ip>
       </contributor>
       <comment>Created page with "&lt;span style="background-color:{{{2|yellow}}}"&gt;{{{1}}}&lt;/span&gt;"</comment>
-      <origin>320</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="60" sha1="lulb4tjx8sejqw955cetbme5hqls4ci" xml:space="preserve">&lt;span style="background-color:{{{2|yellow}}}"&gt;{{{1}}}&lt;/span&gt;</text>
+      <text xml:space="preserve" bytes="60">&lt;span style="background-color:{{{2|yellow}}}"&gt;{{{1}}}&lt;/span&gt;</text>
       <sha1>lulb4tjx8sejqw955cetbme5hqls4ci</sha1>
     </revision>
   </page>
