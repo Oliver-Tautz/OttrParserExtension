@@ -845,7 +845,7 @@ class Template:
                     return instance.LIST_EXPAND_ERROR
                 smw %= (instance.get_smw_repr(smw_context) + "%s")
                 smw_context.call_occurrence_position += 1
-
+            print(smw_context.update_used_iri_triple())
             return smw % ""
         elif self.pattern_list == "BASE":
             # base templates always produce sub object containing the triple
