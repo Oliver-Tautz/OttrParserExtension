@@ -366,6 +366,9 @@ if __name__ == '__main__':
         description='An api to send and receive .stottr files to and from mediawiki with OttrParserExtension')
     parser.add_argument('--config', type=str, default="ottrServerExampleConfig.cfg",
                         help="path to config file. Copy example and change values as desired.")
+    parser.add_argument('--base-url', type=str, default=None,
+                        help="mediawiki base url. Overwrites config")
+
 
     args = parser.parse_args()
 
@@ -389,5 +392,11 @@ if __name__ == '__main__':
         logging.critical("Could not find or parse config. Please check!")
         print(type(e))
         exit(-1)
+
+
+
+    if args.base_url:
+        server_cfg['wikiurl'] = args.base_url
+
 
     app.run(port=server_cfg['port'],host="0.0.0.0", debug=True, threaded=False)

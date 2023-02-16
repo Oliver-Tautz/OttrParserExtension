@@ -58,14 +58,14 @@ RUN git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms.git 
 RUN git clone https://github.com/wikimedia/mediawiki-extensions-Variables.git --branch REL1_34 Variables
 # install ottrparser
 
-RUN git clone https://github.com/Oliver-Tautz/OttrParserExtension.git
+RUN git clone https://github.com/Oliver-Tautz/OttrParserExtension.git --branch docker_release
 WORKDIR /var/www/html/extensions/OttrParserExtension
 RUN python3 -m pip install wheel
 RUN ./setup_ottr_for_mediawiki.sh -a -p python3
 
 WORKDIR /var/www/html
 
-
-CMD ./extensions/OttrParserExtension/ottr_env/bin/python extensions/OttrParserExtension/includes/ottrToSmwPython/ottrServer.py --config /var/www/html/extensions/OttrParserExtension/includes/ottrToSmwPython/ottrServerExampleConfig.cfg
+# CMD ./extensions/OttrParserExtension/ottr_env/bin/python extensions/OttrParserExtension/includes/ottrToSmwPython/ottrServer.py --config /var/www/html/extensions/OttrParserExtension/includes/ottrToSmwPython/ottrServerExampleConfig.cfg --base-url http://localhost/ 
+# This is done in after_setup_script for now ...
 
 # Now start the manual setup ... 

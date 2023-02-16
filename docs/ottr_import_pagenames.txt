@@ -1,0 +1,38 @@
+# These are the pages imported from OTTR-Relevant-Pages.xml
+
+Template:Colored box
+Template:Highlight
+Ottr:Documentation
+Ottr:Overview
+Ottr:Feature Representation
+Ottr:OttrPrefixes
+Ottr:ErrorPages
+Ottr:AllTriples
+Template:Ottr:DebugOnOFF
+Template:Ottr:AllAnnotationsOnOff
+Template:Ottr:DisplayTriplesOnOff
+Template:Ottr:DisplayCode
+Template:Ottr:DisplayOttr
+Template:Ottr:DisplayFormHelp
+Template:Ottr:ListType
+Template:Ottr:Prefix
+Template:Ottr:PrefixCheck
+Template:Ottr:ErrorMsg
+Template:Ottr:AskForTriples
+Ottr:FormTemplate
+Ottr:SubCategoryTemplate
+Template:Ottr:MultiInstanceCreation
+Template:Ottr:SingleInstanceForMultiCreation
+Template:Ottr:SingleInstanceForMultiCreation1
+Template:Ottr:SingleInstanceForMultiCreation2
+Template:Ottr:SingleInstanceForMultiCreation3
+Template:Ottr:SingleInstanceForMultiCreation4
+Template:Ottr:SingleInstanceForMultiCreation5
+Template:Layout:OttrDefaultLayout
+Template:Ottr:Triple
+Template:Ax:SubClassOf
+Template:Ax:Type
+Template:Exists
+Dpm:NamedPizza
+Dpm:Pizza1
+
