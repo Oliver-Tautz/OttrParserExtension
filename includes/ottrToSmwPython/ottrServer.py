@@ -143,6 +143,16 @@ class get_stottr_instances(Resource):
 
         titles = [x['title'] for x in DATA['query']['categorymembers']]
 
+        while 'continue' in DATA.keys():
+            PARAMS = {'action': 'query', 'cmtitle': 'Category:OTTR Instance', 'cmlimit': 'max',
+                      'list': 'categorymembers',
+                      'format': 'json','cmcontinue':DATA['continue']['cmcontinue']}
+            R = S.get(url=URL, params=PARAMS)
+            DATA = R.json()
+            titles = titles + [x['title'] for x in DATA['query']['categorymembers']]
+
+
+
         pages = get_all_pagetexts(titles,S,URL)
 
         pagetexts = [x['revisions'][0]['*'] for x in pages]
@@ -181,6 +191,14 @@ class get_stottr_templates(Resource):
 
         DATA = R.json()
         titles = [x['title'] for x in DATA['query']['categorymembers']]
+
+        while 'continue' in DATA.keys():
+            PARAMS = {'action': 'query', 'cmtitle': 'Category:OTTR Template', 'cmlimit': 'max',
+                      'list': 'categorymembers',
+                      'format': 'json','cmcontinue':DATA['continue']['cmcontinue']}
+            R = S.get(url=URL, params=PARAMS)
+            DATA = R.json()
+            titles = titles + [x['title'] for x in DATA['query']['categorymembers']]
 
         pages = get_all_pagetexts(titles,S,URL)
 
