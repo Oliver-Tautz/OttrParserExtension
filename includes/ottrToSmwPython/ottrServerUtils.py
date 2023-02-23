@@ -6,7 +6,7 @@ import requests
 import urllib
 from stOttrWikiTranslater import parse_stottr_string
 import logging
-
+from datetime import datetime
 OTTR_EXAMPLE = """@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix ax: <http://tpl.ottr.xyz/owl/axiom/0.1/> .
 @prefix ex: <http:example.com/ns#> .
@@ -118,6 +118,12 @@ def get_page_texts(titles,session,url):
 
     return DATA
 
+def get_pagetext_single(title,session,url):
+    """
+    Oh No :(
+    """
+
+    return list(get_page_texts([title],session,url)['query']['pages'].values())[0]['revisions'][0]['*']
 
 def wikiapi_login(Session, URL, bot_user_name, bot_user_password):
     S = Session
@@ -224,6 +230,7 @@ def edit_or_create_page(titles, texts, mediawiki_url, bot_user_name, bot_user_pa
     CSRF_TOKEN = wikiapi_login(S, URL, bot_user_name, bot_user_password)
 
     datas = []
+    timestamps = []
     for title, text in zip(titles, texts):
         # Step 4: POST request to edit a page
         if not append:
@@ -256,9 +263,9 @@ def edit_or_create_page(titles, texts, mediawiki_url, bot_user_name, bot_user_pa
         R = S.post(URL, data=PARAMS_3)
         DATA = R.json()
 
-
+        timestamps.append(datetime.timestamp(datetime.now()))
         logging.info(DATA)
 
         datas.append(dict(DATA))
 
-    return datas
+    return datas, timestamps

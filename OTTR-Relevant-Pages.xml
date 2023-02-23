@@ -1915,5 +1915,25 @@ dpm:NamedPizza[ottr:IRI ?name, xsd:string ?label] :: {
 }}</text>
       <sha1>sge5lwjpu2m7tk7o5plzkoeq8gs9f73</sha1>
     </revision>
-  </page>
+</page>
+<page>
+<title>Template:Ottr:ApiEdits</title>
+<ns>10</ns>
+<id>1312</id>
+<revision>
+<id>2303</id>
+<parentid>2302</parentid>
+<timestamp>2023-02-23T11:05:59Z</timestamp>
+<contributor>
+<ip>127.0.0.1</ip>
+</contributor>
+<origin>2303</origin>
+<model>wikitext</model>
+<format>text/x-wiki</format>
+<text bytes="166" sha1="eh2lko535vwyrozbrg97xms2mhhmxur" xml:space="preserve">
+<noinclude> This Page is managed by the OttrApi! Dont change it manually. </noinclude> {| class="wikitable sortable" |- ! Pagename !! Edit Status !! Timestamp |}
+</text>
+<sha1>eh2lko535vwyrozbrg97xms2mhhmxur</sha1>
+</revision>
+</page>
 </mediawiki>

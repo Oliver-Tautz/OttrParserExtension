@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"<your username>"
+		]
+	},
+	"ottrapiedits": "The name of the extension's entry in Special:SpecialPages",
+	"myextension-desc": "{{desc}}",
+	"myextension-summary": "Description appearing on top of Special:MyExtension.",
+	"action-myextension": "{{doc-action|myextension}}",
+	"right-myextension": "{{doc-right|myextension}}"
+}
