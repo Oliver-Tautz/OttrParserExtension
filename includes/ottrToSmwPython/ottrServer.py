@@ -52,9 +52,9 @@ stottr_output = api.model('stottr_output', {
 
 mediawiki_edit_data = api.model('mediawiki_edit_data', {
 
-    'result': fields.String(),
-    'pageid': fields.Integer(),
-    'title': fields.String(),
+    'result': fields.String(description='mediawiki edit result. Usually \'Success\''),
+    'pageid': fields.Integer(description='id of the edited page.'),
+    'title': fields.String(description='title of the edited page'),
     "nochange": fields.String(),
     "watched": fields.String(),
 })
