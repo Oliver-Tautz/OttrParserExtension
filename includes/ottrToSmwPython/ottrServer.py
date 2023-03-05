@@ -29,26 +29,27 @@ ottr_namespace_server = api.namespace('ottr_server',
 ottr_namespace_get = api.namespace('ottr_get', description="request .stottr files from the wiki.")
 ottr_namespace_post = api.namespace('ottr_post', description="post your .stottr files into the wiki.")
 
+
 ### Model Docs
 stottr_file = api.model('stottr_input_file', {
     'data': fields.String(OTTR_EXAMPLE,
                           description='.stottr file in utf8 string encoding. Can contain templates, instances and prefixes.'),
     'template_namespace': fields.String('Template',
-                                        description='namespace added in front of the template pages in OttrWiki \n can be empty.'),
+                                        description='namespace added in front of the template pages in OttrWiki. \n can be empty.'),
     'instance_namespace': fields.String('',
-                                        description='namespace added in front of the instance pages in OttrWiki \n can be empty.'),
+                                        description='namespace added in front of the instance pages in OttrWiki. \n can be empty.'),
     'overwrite': fields.Boolean(True,
-                                description='Overwrite existing pages. If this is set to False only new pages will be created. Prefixes are added regardless'),
+                                description='Overwrite existing pages.\n If this is set to False only new pages will be created. Prefixes are added regardless.'),
 
 })
 
 stottr_output = api.model('stottr_output', {
-    'templates': fields.String(description="templates from wiki parsed to .stottr syntax."),
-    'instances': fields.String(description="instances from wiki parsed to .stottr syntax."),
-    'prefixes': fields.String(description="prefixes from wiki parsed to .stottr syntax.")
+    'templates': fields.String(description="templates pulled from wiki parsed to .stottr syntax."),
+    'instances': fields.String(description="instances pulled from wiki parsed to .stottr syntax."),
+    'prefixes': fields.String(description="prefixes pulled from wiki parsed to .stottr syntax.")
 })
 
-mediawiki_edit_result = api.model('mediawiki_edit_result', {
+mediawiki_edit_data = api.model('mediawiki_edit_data', {
     'result': fields.String(),
     'pageid': fields.Integer(),
     'title': fields.String(),
@@ -57,7 +58,7 @@ mediawiki_edit_result = api.model('mediawiki_edit_result', {
 })
 
 mediawiki_edit = api.model('mediawiki_edit', {
-    'edit': fields.Nested(mediawiki_edit_result)
+    'edit': fields.Nested(mediawiki_edit_data)
 
 })
 
@@ -65,6 +66,7 @@ mediawiki_edits = api.model('mediawiki_edits', {
     'edits': fields.List(fields.Nested(mediawiki_edit))
 
 })
+
 
 
 ## Helper Functions.
@@ -281,6 +283,7 @@ class get_stottr_all(Resource):
 class stottr_file(Resource):
 
     @api.doc(body=stottr_file, responses={201: "Created Stottr Pages Sucessful", 400: "Bad Request"})
+    @api.response(200, 'Sucess', mediawiki_edits)
     def post(self):
         """
         Import stottr file.
@@ -349,6 +352,7 @@ class stottr_file(Resource):
         templates = [f"<ottr>{thing}</ottr>" for thing in templates]
         instances = [f"<ottr>{thing}</ottr>" for thing in instances]
 
+        categories = ["Instance"]*len(instance_titles) + ["Template"] * len(template_titles)
         titles = instance_titles + template_titles
         things = instances + templates
 
@@ -364,8 +368,8 @@ class stottr_file(Resource):
 
         # printable mediawiki edit columns
         pageedits = ''.join(
-            [f"|-\n| {p['edit']['title']} || {p['edit']['result']} || {timestamp}\n" for (p,timestamp) in
-             zip(pages,timestamps)])
+            [f"|-\n| [[{p['edit']['title']}]] || {category} || {timestamp} || {p['edit']['result']}\n" for (p,timestamp,category) in
+             zip(pages,timestamps,categories)])
 
         S = requests.Session()
         current_edit_text = get_pagetext_single("Template:Ottr:ApiEdits", S, server_cfg['wikiurl'] + 'api.php').split(
