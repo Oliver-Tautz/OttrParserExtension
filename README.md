@@ -2,30 +2,17 @@
 
 An extension for the ([Semantic](https://www.semantic-mediawiki.org/wiki/Semantic_MediaWiki)) [Media Wiki](https://www.mediawiki.org/wiki/MediaWiki). It parses text in the [OTTR template language](https://ottr.xyz/) and produces code in Media Wiki Syntax. Triples are represented as subobjects.
 
-The help page for wiki usage: https://www.mediawiki.org/wiki/Help:Extension:OttrParser.
 
 
-## Manual installation in existing mediawiki
-If you have an existing mediawiki or need a specific setup you probably want to install the extension manually.
-In that case see Media Wiki page of the extension: [Install Instructions](https://www.mediawiki.org/wiki/Extension:OttrParser#Installation).
+# For Users
 
-## Full Semantic Media Wiki install with Docker
+Find usage instructions at https://www.mediawiki.org/wiki/Help:Extension:OttrParser.
 
-If you want to setup a new mediawiki with the extention you might want to use our docker image instead.
+# For mediawiki admins
 
-A [Docker image](https://hub.docker.com/r/otautz/ottr-smw) of the Semantic Media Wiki with the OttrParserExtension and installation instructions are provided.
+Find installation and maintainence instructions at https://www.mediawiki.org/wiki/Extension:OttrParser
 
-## Updating existing install
-
-If you have a working mediawiki with **OTTR Parser Extension** installed you can easily update to the newest version.
-
-1. use `cd $MEDIAWIKI_ROOT/extensions/OttrParserExtension`, where MEDIAWIKI_ROOT needs to be replaced by the filepath to the root of your mediawiki installation.
-2. After that you can use `git pull` to get the newest Version of the extension.
-
-3. Finally use `./setup_ottr_for_mediawiki.sh`to install the new version.
-
-
-## Development
+# Development
 
 In deployment the extension uses the [includes/Hooks.php](includes/Hooks.php). It calls the python script [printOttrInSmw.py](includes/ottrToSmwPython/printOttrInSmw.py) from an installed python environment. You should use [setup_ottr_for_mediawiki.sh](setup_ottr_for_mediawiki.sh) for setting it up.
 If you want to further develop this extension, it is advised to change the [includes/Hooks.php](includes/Hooks.php) such that it uses a direct python call without the installation as it is easier to test changes this way. 
