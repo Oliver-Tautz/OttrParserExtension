@@ -4,15 +4,15 @@ An extension for the ([Semantic](https://www.semantic-mediawiki.org/wiki/Semanti
 
 
 
-# For Users
+## For Users
 
 Find usage instructions at https://www.mediawiki.org/wiki/Help:Extension:OttrParser.
 
-# For mediawiki admins
+## For mediawiki admins
 
 Find installation and maintainence instructions at https://www.mediawiki.org/wiki/Extension:OttrParser
 
-# Development
+## Development
 
 In deployment the extension uses the [includes/Hooks.php](includes/Hooks.php). It calls the python script [printOttrInSmw.py](includes/ottrToSmwPython/printOttrInSmw.py) from an installed python environment. You should use [setup_ottr_for_mediawiki.sh](setup_ottr_for_mediawiki.sh) for setting it up.
 If you want to further develop this extension, it is advised to change the [includes/Hooks.php](includes/Hooks.php) such that it uses a direct python call without the installation as it is easier to test changes this way. 
