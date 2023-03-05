@@ -7,6 +7,9 @@ import urllib
 from stOttrWikiTranslater import parse_stottr_string
 import logging
 from datetime import datetime
+
+import time
+
 OTTR_EXAMPLE = """@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix ax: <http://tpl.ottr.xyz/owl/axiom/0.1/> .
 @prefix ex: <http:example.com/ns#> .
@@ -217,8 +220,9 @@ def append_to_prefixes(prefixes, mediawiki_url, bot_user_name, bot_user_password
 
 def edit_or_create_page(titles, texts, mediawiki_url, bot_user_name, bot_user_password, append=False, create_only=False):
     # TODO ERROR HANDLING
-    # TODO BATCH PROCESSING ...
 
+    # TODO BATCH PROCESSING ...
+    # I dont think its supported by the mediawiki api ...
     S = requests.Session()
 
     # use urlparse or similar here!
@@ -231,7 +235,9 @@ def edit_or_create_page(titles, texts, mediawiki_url, bot_user_name, bot_user_pa
 
     datas = []
     timestamps = []
+
     for title, text in zip(titles, texts):
+        timer = time.time()
         # Step 4: POST request to edit a page
         if not append:
             PARAMS_3 = {
@@ -263,7 +269,8 @@ def edit_or_create_page(titles, texts, mediawiki_url, bot_user_name, bot_user_pa
         R = S.post(URL, data=PARAMS_3)
         DATA = R.json()
 
-        timestamps.append(datetime.timestamp(datetime.now()))
+        timestamps.append(datetime.now().strftime("%d-%m-%y %H:%M:%S"))
+
         logging.info(DATA)
 
         datas.append(dict(DATA))
