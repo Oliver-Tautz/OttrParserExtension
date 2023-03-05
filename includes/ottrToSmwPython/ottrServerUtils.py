@@ -7,8 +7,8 @@ import urllib
 from stOttrWikiTranslater import parse_stottr_string
 import logging
 from datetime import datetime
-import time
 
+import time
 
 OTTR_EXAMPLE = """@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix ax: <http://tpl.ottr.xyz/owl/axiom/0.1/> .
@@ -236,7 +236,6 @@ def edit_or_create_page(titles, texts, mediawiki_url, bot_user_name, bot_user_pa
     datas = []
     timestamps = []
 
-
     for title, text in zip(titles, texts):
         timer = time.time()
         # Step 4: POST request to edit a page
@@ -271,9 +270,9 @@ def edit_or_create_page(titles, texts, mediawiki_url, bot_user_name, bot_user_pa
         DATA = R.json()
 
         timestamps.append(datetime.now().strftime("%d-%m-%y %H:%M:%S"))
+
         logging.info(DATA)
 
         datas.append(dict(DATA))
-
 
     return datas, timestamps

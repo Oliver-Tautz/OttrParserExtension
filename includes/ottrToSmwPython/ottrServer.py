@@ -49,7 +49,9 @@ stottr_output = api.model('stottr_output', {
     'prefixes': fields.String(description="prefixes pulled from wiki parsed to .stottr syntax.")
 })
 
+
 mediawiki_edit_data = api.model('mediawiki_edit_data', {
+
     'result': fields.String(),
     'pageid': fields.Integer(),
     'title': fields.String(),
@@ -66,7 +68,6 @@ mediawiki_edits = api.model('mediawiki_edits', {
     'edits': fields.List(fields.Nested(mediawiki_edit))
 
 })
-
 
 
 ## Helper Functions.
@@ -367,9 +368,9 @@ class stottr_file(Resource):
                                          bot_user_password=server_cfg['bot_user_password'])
 
         # printable mediawiki edit columns
-        pageedits = ''.join(
-            [f"|-\n| [[{p['edit']['title']}]] || {category} || {timestamp} || {p['edit']['result']}\n" for (p,timestamp,category) in
+        pageedits = ''.join([f"|-\n| [[{p['edit']['title']}]] || {category} || {timestamp} || {p['edit']['result']}\n" for (p,timestamp,category) in
              zip(pages,timestamps,categories)])
+
 
         S = requests.Session()
         current_edit_text = get_pagetext_single("Template:Ottr:ApiEdits", S, server_cfg['wikiurl'] + 'api.php').split(
