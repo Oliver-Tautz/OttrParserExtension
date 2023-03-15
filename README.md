@@ -2,6 +2,8 @@
 
 An extension for the ([Semantic](https://www.semantic-mediawiki.org/wiki/Semantic_MediaWiki)) [Media Wiki](https://www.mediawiki.org/wiki/MediaWiki). It parses text in the [OTTR template language](https://ottr.xyz/) and produces code in Media Wiki Syntax. Triples are represented as subobjects.
 
+The extension also comes with an API to export and import .stottr files to and from mediawiki. Find the documentation here: https://www.mediawiki.org/wiki/Help:Extension:OttrParser:API#The_API_will_do_the_following_things_when_importing:
+
 ## Installation: For mediawiki admins
 
 Find installation and maintenance instructions at https://www.mediawiki.org/wiki/Extension:OttrParser
