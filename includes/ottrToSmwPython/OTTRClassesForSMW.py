@@ -4,7 +4,7 @@ from includes.ottrToSmwPython.OTTRParser import OTTRParser
 from includes.ottrToSmwPython.Utils import get_text, DELIMITERS, get_min_max_size, get_prefix_special_page_name, \
     VarNames, get_input_type_of_ottr_type
 from includes.ottrToSmwPython.stOTTR.stOTTRParser import stOTTRParser
-from includes.ottrToSmwPython.Settings import form_typehint_mapping, form_listhint, ottr_template_namespaces
+from includes.ottrToSmwPython.Settings import FORM_TYPEHINT_MAPPING, FORM_LISTHINT, ottr_template_namespaces
 from typing import List
 import re
 #from includes.ottrToSmwPython.SMWGenerator import  debug_print
@@ -783,7 +783,7 @@ class Signature:
                 if para.otype and para.otype.type_ in [
                     Type.KindOfTypes.LIST, Type.KindOfTypes.NELIST]:
 
-                    listhint = f"<td><i>{form_listhint}</td>"
+                    listhint = f"<td><i>{FORM_LISTHINT}</td>"
                 else:
                     listhint = '<td></td>'
 
@@ -791,10 +791,10 @@ class Signature:
                 typestr = "<td><i>(of type %s)</i></td>" % para_type
                 para_type = strip_form_type(str(para.otype.get_smw_repr()).strip())
 
-                if para_type in form_typehint_mapping.keys():
+                if para_type in FORM_TYPEHINT_MAPPING.keys():
 
 
-                    typehint = f'<td><i>{form_typehint_mapping[para_type]}</i></td>'  #
+                    typehint = f'<td><i>{FORM_TYPEHINT_MAPPING[para_type]}</i></td>'  #
 
                 else:
                     typehint = "<td></td>"
