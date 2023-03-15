@@ -39,6 +39,8 @@ def get_iris_from_wikicode(arglist_wikicode):
 
     return ret + ')'
 
+def mediawiki_print_if_exists(pagename,string):
+    return "{{#ifeq: {{Exists|%s}} | 1 | %s |}}" % (pagename,string)
 
 def mediawiki_sub_arg(arg):
     """
@@ -336,7 +338,20 @@ class SMWGenerator:
 
                 if s:
                     s = mediawiki_wrap_if_calldepht(s, 1)
+                    # Print instance assignements
                     print(mediawiki_colorbox('instance assignements', s))
+
+                    # Print template link.
+                    template_name= template.signature.template_name
+
+                    possible_template_sitenames = [template_name] + [prefix + ':' + template_name for prefix in ottr_template_namespaces]
+                    possible_template_links = [f"[[{sitename}]]" for sitename in possible_template_sitenames]
+                    possible_template_links_exist_wrapped = []
+
+                    print("\'\'\'Template Link:\'\'\'" )
+                    for name,link in zip(possible_template_sitenames,possible_template_links):
+                        print( mediawiki_print_if_exists(name,mediawiki_wrap_if_calldepht(link, 1)))
+
                 ###
 
                 wrong_namespace_warning_text = "{{ottr:ErrorMsg|Page ({{FULLPAGENAME}}) does <b>NOT</b> lie in one of <b>%s</b> namespaces. You can add custom namespaces to Settings.py! )|code=-2|type=Warning}}" % (
