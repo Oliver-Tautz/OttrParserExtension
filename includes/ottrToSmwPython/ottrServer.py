@@ -14,7 +14,6 @@ from flask_restx import Api, Resource, fields
 import requests
 from ottrServerUtils import *
 from includes.ottrToSmwPython.Settings import API_QUERY_LIMIT
-
 import logging
 
 ### App and template setup
@@ -30,43 +29,45 @@ ottr_namespace_server = api.namespace('ottr_server',
 ottr_namespace_get = api.namespace('ottr_get', description="request .stottr files from the wiki.")
 ottr_namespace_post = api.namespace('ottr_post', description="post your .stottr files into the wiki.")
 
+
 ### Model Docs
 stottr_file = api.model('stottr_input_file', {
     'data': fields.String(OTTR_EXAMPLE,
                           description='.stottr file in utf8 string encoding. Can contain templates, instances and prefixes.'),
     'template_namespace': fields.String('Template',
-                                        description='namespace added in front of the template pages in OttrWiki \n can be empty.'),
+                                        description='namespace added in front of the template pages in OttrWiki. \n can be empty.'),
     'instance_namespace': fields.String('',
-                                        description='namespace added in front of the instance pages in OttrWiki \n can be empty.'),
+                                        description='namespace added in front of the instance pages in OttrWiki. \n can be empty.'),
     'overwrite': fields.Boolean(True,
-                                description='Overwrite existing pages. If this is set to False only new pages will be created. Prefixes are added regardless'),
+                                description='Overwrite existing pages.\n If this is set to False only new pages will be created. Prefixes are added regardless.'),
 
 })
 
 stottr_output = api.model('stottr_output', {
-    'templates': fields.String(description="templates from wiki parsed to .stottr syntax."),
-    'instances': fields.String(description="instances from wiki parsed to .stottr syntax."),
-    'prefixes': fields.String(description="prefixes from wiki parsed to .stottr syntax.")
+    'templates': fields.String(description="templates pulled from wiki parsed to .stottr syntax."),
+    'instances': fields.String(description="instances pulled from wiki parsed to .stottr syntax."),
+    'prefixes': fields.String(description="prefixes pulled from wiki parsed to .stottr syntax.")
 })
 
-mediawiki_edit_result = api.model('mediawiki_edit_result', {
-    'result':fields.String(),
-    'pageid':fields.Integer(),
-    'title':fields.String(),
+
+mediawiki_edit_data = api.model('mediawiki_edit_data', {
+
+    'result': fields.String(description='mediawiki edit result. Usually \'Success\''),
+    'pageid': fields.Integer(description='id of the edited page.'),
+    'title': fields.String(description='title of the edited page'),
     "nochange": fields.String(),
     "watched": fields.String(),
 })
 
 mediawiki_edit = api.model('mediawiki_edit', {
-    'edit': fields.Nested(mediawiki_edit_result)
+    'edit': fields.Nested(mediawiki_edit_data)
 
 })
 
-mediawiki_edits= api.model('mediawiki_edits', {
+mediawiki_edits = api.model('mediawiki_edits', {
     'edits': fields.List(fields.Nested(mediawiki_edit))
 
 })
-
 
 
 ## Helper Functions.
@@ -85,21 +86,21 @@ def _parse_config(path):
     return params
 
 
-def split(list,sublist_size):
+def split(list, sublist_size):
     sublists = []
-    for i in range(0,len(list),sublist_size):
-        sublists.append(list[i:i+sublist_size])
+    for i in range(0, len(list), sublist_size):
+        sublists.append(list[i:i + sublist_size])
     return sublists
 
 
-def get_all_pagetexts(titles,S,URL):
-
+def get_all_pagetexts(titles, S, URL):
     titles_split = split(titles, API_QUERY_LIMIT)
 
     pages = []
     for titles in titles_split:
         pages.extend(get_page_texts(titles, S, URL)['query']['pages'].values())
     return pages
+
 
 ## Server Functions GET
 
@@ -143,7 +144,15 @@ class get_stottr_instances(Resource):
 
         titles = [x['title'] for x in DATA['query']['categorymembers']]
 
-        pages = get_all_pagetexts(titles,S,URL)
+        while 'continue' in DATA.keys():
+            PARAMS = {'action': 'query', 'cmtitle': 'Category:OTTR Instance', 'cmlimit': 'max',
+                      'list': 'categorymembers',
+                      'format': 'json', 'cmcontinue': DATA['continue']['cmcontinue']}
+            R = S.get(url=URL, params=PARAMS)
+            DATA = R.json()
+            titles = titles + [x['title'] for x in DATA['query']['categorymembers']]
+
+        pages = get_all_pagetexts(titles, S, URL)
 
         pagetexts = [x['revisions'][0]['*'] for x in pages]
         # print(pagetexts)
@@ -182,7 +191,15 @@ class get_stottr_templates(Resource):
         DATA = R.json()
         titles = [x['title'] for x in DATA['query']['categorymembers']]
 
-        pages = get_all_pagetexts(titles,S,URL)
+        while 'continue' in DATA.keys():
+            PARAMS = {'action': 'query', 'cmtitle': 'Category:OTTR Template', 'cmlimit': 'max',
+                      'list': 'categorymembers',
+                      'format': 'json', 'cmcontinue': DATA['continue']['cmcontinue']}
+            R = S.get(url=URL, params=PARAMS)
+            DATA = R.json()
+            titles = titles + [x['title'] for x in DATA['query']['categorymembers']]
+
+        pages = get_all_pagetexts(titles, S, URL)
 
         pagetexts = []
 
@@ -267,6 +284,7 @@ class get_stottr_all(Resource):
 class stottr_file(Resource):
 
     @api.doc(body=stottr_file, responses={201: "Created Stottr Pages Sucessful", 400: "Bad Request"})
+    @api.response(200, 'Sucess', mediawiki_edits)
     def post(self):
         """
         Import stottr file.
@@ -335,20 +353,38 @@ class stottr_file(Resource):
         templates = [f"<ottr>{thing}</ottr>" for thing in templates]
         instances = [f"<ottr>{thing}</ottr>" for thing in instances]
 
+        categories = ["Instance"]*len(instance_titles) + ["Template"] * len(template_titles)
         titles = instance_titles + template_titles
         things = instances + templates
 
-        pages = edit_or_create_page(mediawiki_url=server_cfg['wikiurl'], titles=titles,
+        pages,timestamps = edit_or_create_page(mediawiki_url=server_cfg['wikiurl'], titles=titles,
                                     texts=things,
                                     bot_user_name=server_cfg['bot_user_name'],
                                     bot_user_password=server_cfg['bot_user_password'],
                                     append=False, create_only=not overwrite)
 
-        print(pages)
-
         prefix_edit = append_to_prefixes(prefixes=prefixes, mediawiki_url=server_cfg['wikiurl'],
                                          bot_user_name=server_cfg['bot_user_name'],
                                          bot_user_password=server_cfg['bot_user_password'])
+
+        # printable mediawiki edit columns
+        pageedits = ''.join([f"|-\n| [[{p['edit']['title']}]] || {category} || {timestamp} || {p['edit']['result']}\n" for (p,timestamp,category) in
+             zip(pages,timestamps,categories)])
+
+
+        S = requests.Session()
+        current_edit_text = get_pagetext_single("Template:Ottr:ApiEdits", S, server_cfg['wikiurl'] + 'api.php').split(
+            '\n')
+        last_line = current_edit_text[-1]
+        current_edit_text = '\n'.join(current_edit_text[:-1])
+
+        new_edit_text = current_edit_text + pageedits + '\n' + last_line
+
+        edit_or_create_page(mediawiki_url=server_cfg['wikiurl'], titles=["Template:Ottr:ApiEdits"],
+                            texts=[new_edit_text],
+                            bot_user_name=server_cfg['bot_user_name'],
+                            bot_user_password=server_cfg['bot_user_password'],
+                            append=False, create_only=False)
 
         return pages, 201
 
@@ -369,7 +405,6 @@ if __name__ == '__main__':
     parser.add_argument('--base-url', type=str, default=None,
                         help="mediawiki base url. Overwrites config")
 
-
     args = parser.parse_args()
 
     if not Path(args.config).is_file():
@@ -380,7 +415,7 @@ if __name__ == '__main__':
         server_cfg = _parse_config(
             args.config)
 
-        logging.basicConfig(filename=server_cfg['logfile_path'],  level=logging.DEBUG, filemode='a')
+        logging.basicConfig(filename=server_cfg['logfile_path'], level=logging.DEBUG, filemode='a')
         logging.info(f" ----- Config parsed sucessfully :) Starting Server at {datetime.now()} ----- ")
 
 
@@ -393,10 +428,7 @@ if __name__ == '__main__':
         print(type(e))
         exit(-1)
 
-
-
     if args.base_url:
         server_cfg['wikiurl'] = args.base_url
 
-
-    app.run(port=server_cfg['port'],host="0.0.0.0", debug=True, threaded=False)
+    app.run(port=server_cfg['port'], host="0.0.0.0", debug=True, threaded=False)

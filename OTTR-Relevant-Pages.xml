@@ -1139,26 +1139,39 @@ Display debug info:
     <ns>0</ns>
     <id>34</id>
     <revision>
-      <id>1208</id>
-      <parentid>1202</parentid>
-      <timestamp>2023-01-26T12:14:48Z</timestamp>
+      <id>2307</id>
+      <parentid>2301</parentid>
+      <timestamp>2023-02-23T11:20:14Z</timestamp>
       <contributor>
         <username>Oliver Tautz</username>
         <id>1</id>
       </contributor>
-      <origin>1208</origin>
+      <origin>2307</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1193" sha1="5xdvhmv8h6sqdoyyoeqp624996uabfc" xml:space="preserve">Put here all your prefixes used in ottr templates.
+      <text bytes="1193" sha1="npbbg761es54fdv154vyim7h9kjpwa9" xml:space="preserve">Put here all your prefixes used in ottr templates.
 &lt;ottr&gt;
-@prefix pt: &lt;https://dipromag.techfak.uni-bielefeld.de/w/index.php/pt:&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix dipromag: &lt;http://tpl.ottr.xyz/dipromag/0.1/&gt; .
+@prefix qb: &lt;http://purl.org/linked-data/cube#&gt; .
+@prefix sdmx-measure: &lt;http://purl.org/linked-data/sdmx/2009/measure#&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix qudt: &lt;http://qudt.org/2.1/schema/qudt/&gt; .
+@prefix emmo: &lt;http://www.w3.org/2002/07/emmo&gt; .
+@prefix pmdco: &lt;https://material-digital.de/pmdco/&gt; .
+@prefix ax: &lt;http://tpl.ottr.xyz/owl/axiom/0.1/&gt; .
+@prefix pt2: &lt;https://dipromag.techfak.uni-bielefeld.de/w/index.php/pt:Template&gt; .
+@prefix ottr: &lt;http://ns.ottr.xyz/0.4/&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix rdfs:    &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix dipromag:    &lt;http://tpl.ottr.xyz/dipromag/0.1/&gt; .
-@prefix dpm:    &lt;http://dipromag.techfak.uni-bielefeld.de/dipromag_onto/0.1/&gt; .lt;/ottr&gt;</text>
-      <sha1>5xdvhmv8h6sqdoyyoeqp624996uabfc</sha1>
+@prefix interval: &lt;http://reference.data.gov.uk/def/intervals/&gt; .
+@prefix ex: &lt;http:example.com/ns#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix pt: &lt;https://dipromag.techfak.uni-bielefeld.de/w/index.php/pt:&gt; .
+@prefix sdmx-dimension:&lt;http://purl.org/linked-data/sdmx/2009/dimension#&gt; .
+@prefix dpm: &lt;http://dipromag.techfak.uni-bielefeld.de/dipromag_onto/0.1/&gt; .
+@prefix sdmx-concept: &lt;http://purl.org/linked-data/sdmx/2009/concept#&gt; .
+&lt;/ottr&gt;</text>
+      <sha1>npbbg761es54fdv154vyim7h9kjpwa9</sha1>
     </revision>
   </page>
   <page>
@@ -1914,6 +1927,34 @@ dpm:NamedPizza[ottr:IRI ?name, xsd:string ?label] :: {
 |default_form=dpm:NamedPizza
 }}</text>
       <sha1>sge5lwjpu2m7tk7o5plzkoeq8gs9f73</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Ottr:ApiEdits</title>
+    <ns>10</ns>
+    <id>1314</id>
+    <revision>
+      <id>2309</id>
+      <parentid>2308</parentid>
+      <timestamp>2023-02-23T11:20:24Z</timestamp>
+      <contributor>
+        <username>Oliver Tautz</username>
+        <id>1</id>
+      </contributor>
+      <origin>2309</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="166" sha1="eh2lko535vwyrozbrg97xms2mhhmxur" xml:space="preserve">&lt;noinclude&gt;
+This Page is managed by the OttrApi! Dont change it manually.
+&lt;/noinclude&gt;
+
+
+{| class="wikitable sortable"
+|-
+! Pagename   !! Edit Status !! Timestamp
+
+|}</text>
+      <sha1>eh2lko535vwyrozbrg97xms2mhhmxur</sha1>
     </revision>
   </page>
 </mediawiki>
