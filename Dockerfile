@@ -38,7 +38,7 @@ RUN git clone https://github.com/wikimedia/mediawiki-extensions-Arrays.git  --br
 
     # Install AutoCreatePage
 
-RUN git clone git@github.com:Oliver-Tautz/AutoCreatePage.git AutoCreatePage
+RUN git clone https://github.com:Oliver-Tautz/AutoCreatePage.git AutoCreatePage
 
     # Install Input Box
     # this seems to be installed 
