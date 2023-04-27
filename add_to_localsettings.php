@@ -33,6 +33,7 @@ $egAutoCreatePageNamespaces = [
 ];
 
 
-
+$egAutoCreatePageLogfile="autocreatepage.log"
+$egAutoCreatePageAPIEndpoints="http://localhost/api.php";
 
 ###############################################################
