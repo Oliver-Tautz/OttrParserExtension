@@ -21,6 +21,8 @@ require_once "$IP/extensions/AutoCreatePage/AutoCreatePage.php";
 
 # This surpresses some warnings ..
 $wgDeprecationReleaseLimit = '1.x';
+error_reporting(E_ALL ^ (E_NOTICE | E_WARNING | E_DEPRECATED));
+ini_set( 'display_errors',1 );
 
 # dpm namespace
 define("NS_dpm", 3000);
