@@ -15,6 +15,8 @@ wfLoadExtension( 'Arrays' );
 wfLoadExtension( 'PageForms' );
 wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'Variables' );
+wfLoadExtension( 'RegexFunctions' );
+
 
 require_once "$IP/extensions/AutoCreatePage/AutoCreatePage.php";
 #wfLoadExtension( 'AutoCreatePage' );

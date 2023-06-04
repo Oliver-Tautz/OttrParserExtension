@@ -70,6 +70,9 @@ RUN git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms.git 
 
 
 RUN git clone https://github.com/wikimedia/mediawiki-extensions-Variables.git --branch REL1_39 Variables
+
+RUN git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/RegexFunctions.git --branch REL1_39 RegexFunctions
+
 # install ottrparser
 
 RUN git clone https://github.com/Oliver-Tautz/OttrParserExtension.git --branch docker_release
