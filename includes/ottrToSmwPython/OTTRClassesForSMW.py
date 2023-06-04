@@ -84,9 +84,9 @@ class SMWContext:
         # The {{rmatch: x | pattern | | create}} can be understood as
         # "If the substituted argument is a literal, dont create the page. Do it otherwise."
 
-        print("{{#if: {{#pos:{{{ottr_arg_type_%i|}}}|ottr:IRI§}}|{{#vardefine: %s|{{#var:%s}}{{{{{{%i}}}|}}},}}}} {{#rmatch:{{{%i}}}|\".*\"\^\^.*| |{{#createpageifnotex:{{{%i}}}|[[Category:dpm]]}}}} " % (
+        #print("{{#if: {{#pos:{{{ottr_arg_type_%i|}}}|ottr:IRI§}}|{{#vardefine: %s|{{#var:%s}}{{{{{{%i}}}|}}},}}}} {{#rmatch:{{{%i}}}|\".*\"\^\^.*| |{{#createpageifnotex:{{{%i}}}|[[Category:dpm]]}}}} " % (
 
-        reference, VarNames.UsedIris, VarNames.UsedIris, reference, reference,reference))
+        #reference, VarNames.UsedIris, VarNames.UsedIris, reference, reference,reference))
         return "{{#if: {{#pos:{{{ottr_arg_type_%i|}}}|ottr:IRI§}}|{{#vardefine: %s|{{#var:%s}}{{{{{{%i}}}|}}},}}}} {{#rmatch:{{{%i}}}|\".*\"\^\^.*| |{{#createpageifnotex:{{{%i}}}|[[Category:dpm]]}}}} " % (
 
         reference, VarNames.UsedIris, VarNames.UsedIris, reference, reference,reference)
