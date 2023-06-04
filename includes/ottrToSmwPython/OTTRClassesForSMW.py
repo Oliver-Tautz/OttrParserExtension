@@ -80,8 +80,16 @@ class SMWContext:
     @staticmethod
     def update_used_iri_single(reference):
 
-        return "{{#if: {{#pos:{{{ottr_arg_type_%i|}}}|ottr:IRI§}}|{{#vardefine: %s|{{#var:%s}}{{{{{{%i}}}|}}},}}}} {{#createpageifnotex:{{{%i}}}|[[Category:dpm]]}} " % (
-        reference, VarNames.UsedIris, VarNames.UsedIris, reference, reference)
+        #CAUTION Here both the createpageifnotex and regexfunctions extensions are used!
+        # The {{rmatch: x | pattern | | create}} can be understood as
+        # "If the substituted argument is a literal, dont create the page. Do it otherwise."
+
+        #print("{{#if: {{#pos:{{{ottr_arg_type_%i|}}}|ottr:IRI§}}|{{#vardefine: %s|{{#var:%s}}{{{{{{%i}}}|}}},}}}} {{#rmatch:{{{%i}}}|\".*\"\^\^.*| |{{#createpageifnotex:{{{%i}}}|[[Category:dpm]]}}}} " % (
+
+        #reference, VarNames.UsedIris, VarNames.UsedIris, reference, reference,reference))
+        return "{{#if: {{#pos:{{{ottr_arg_type_%i|}}}|ottr:IRI§}}|{{#vardefine: %s|{{#var:%s}}{{{{{{%i}}}|}}},}}}} {{#rmatch:{{{%i}}}|\".*\"\^\^.*| |{{#createpageifnotex:{{{%i}}}|[[Category:dpm]]}}}} " % (
+
+        reference, VarNames.UsedIris, VarNames.UsedIris, reference, reference,reference)
 
         # return "{{#if: {{#pos:{{{ottr_arg_type_%i|}}}|ottr:IRI§}}|{{#vardefine: %s|{{#var:%s}}{{{%i|}}},}}}}" % (
        #     reference, VarNames.UsedIris, VarNames.UsedIris, reference)

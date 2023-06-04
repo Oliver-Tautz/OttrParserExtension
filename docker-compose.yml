@@ -1,0 +1,33 @@
+# Access via "http://localhost:8080"
+#
+# Ottrwiki with mariadb sql
+version: '3'
+services:
+  mediawiki:
+    image: otautz/ottr-smw:latest
+    container_name: OTTRWIKI
+    restart: always
+    networks:
+      - docker_network
+    ports:
+      - 8080:80
+      - 5000:5000
+    volumes:
+      - /var/www/html/
+  database:
+    image: mariadb:10.11.3-jammy
+    container_name: OTTRWIKI_DB
+    restart: always
+    networks:
+      - docker_network
+    environment:
+      MYSQL_DATABASE: my_wiki
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: wikimedia
+      MYSQL_PASSWORD: wikimedia
+    volumes:
+      - /var/lib/mysql
+networks:
+  docker_network:
+    name: OTTR_NETWORK
+    driver: bridge

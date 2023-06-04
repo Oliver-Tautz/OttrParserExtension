@@ -111,7 +111,7 @@ check_container=$(docker container inspect $MEDIAWIKI_CONTAINER_NAME | jq '.')
 
 if [ "$check_container" = "[]" ]; then
     echo "The docker container does not exist! Use the -c option. You can find your container with 'docker container ls'."
-    exit
+    exit 1
 fi
 
 
@@ -121,22 +121,9 @@ fi
 
 
 if [[ ! -f "$LOCALSETTINGS_PATH" ]] ; then
-    read -p "$LOCALSETTINGS_PATH not found! Do you want to search for it in your home folder?[y/n]" yn
-    case $yn in
-        [Yy]* ) found=$(find /home -name LocalSettings.php -print -quit -not -path ':/.*' -maxdepth 3  2>/dev/null);
-                echo $found
-                if [ $? -ne 0 ]; then
-                    echo "No LocalSettings.php found in your home! Please restart this script with the -s option pointing to your file."
-                    exit
-                else
-                    echo "Found $found"
-                    LOCALSETTINGS_PATH=$found
-                    echo "Continuing."
-                fi
-                ;;
-        *)  echo "$LOCALSETTINGS_PATH not found. Abort."
-            exit;;
-    esac
+    echo "$LOCALSETTINGS_PATH not found. Abort."
+    exit 1
+    
 fi
 
 
