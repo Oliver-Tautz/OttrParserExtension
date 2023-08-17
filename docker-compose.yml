@@ -4,7 +4,7 @@
 version: '3'
 services:
   mediawiki:
-    image: otautz/ottr-smw:latest
+    image: ottrparserextension/ottr-smw:0.1.3
     container_name: OTTRWIKI
     restart: always
     networks:

@@ -77,7 +77,8 @@ RUN git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/RegexFunctions
 
 RUN git clone https://github.com/Oliver-Tautz/OttrParserExtension.git --branch docker_release
 WORKDIR /var/www/html/extensions/OttrParserExtension
-RUN python3 -m pip install wheel
+#RUN python3 -m pip install wheel
+RUN apt install python3-wheel
 RUN ./setup_ottr_for_mediawiki.sh -a -p python3
 
 WORKDIR /var/www/html
